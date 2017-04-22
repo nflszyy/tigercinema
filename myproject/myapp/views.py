@@ -33,9 +33,10 @@ def welcome(request):
 def uploadform(request):
     global movie_count
     if request.method == 'POST':
-        movie_count+=1
+
         form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():
+            movie_count+=1
             firstname = form.cleaned_data['fname']
             lastname = form.cleaned_data['lname']
             descript = form.cleaned_data['description']
