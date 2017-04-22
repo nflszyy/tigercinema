@@ -41,10 +41,11 @@ def uploadform(request):
             lastname = form.cleaned_data['lname']
             descript = form.cleaned_data['description']
             titlename = form.cleaned_data['title']
+            choiceval = form.cleaned_data['choice']
             thumb = lastname+str(movie_count)+'.jpg'
-            newdoc = Document(fname = firstname, lname = lastname, title = titlename, thumbnail = thumb, description = descript, docfile=request.FILES['docfile'])         
-            #need to figure out how to handle data from choice
-            #here is where we put this data on some database      
+            newdoc = Document(fname = firstname, lname = lastname, title = titlename, 
+                              thumbnail = thumb, description = descript, 
+                              choice = choiceval, docfile=request.FILES['docfile'])              
             newdoc.save()
 
             path = os.path.join(settings.BASE_DIR, 'myproject', 'myapp', 'static', 'thumbnails')  
@@ -71,7 +72,7 @@ def uploadsuccess(request):
 
 def documentary(request):
  # Load documents for the list page
-    documents = Document.objects.all()
+    documents = Document.objects.filter(choice__exact='2')
 
     # Render list page with the documents and the form
     return render(
@@ -81,7 +82,7 @@ def documentary(request):
     )
 def narrative(request):
  # Load documents for the list page
-    documents = Document.objects.all()
+    documents = Document.objects.filter(choice__exact='1')
 
     # Render list page with the documents and the form
     return render(
