@@ -11,3 +11,5 @@ class DocumentForm(forms.Form):
     description = forms.CharField(widget = forms.Textarea, label="Short description of your work:")
     choice = forms.ChoiceField(choices=[("1", "Narrative"), ("2", "Documentary")], label="Choose a type")
     docfile = forms.FileField(label='Upload your movie here',validators=[validate_mime_type])
+
+ #comment to test git
