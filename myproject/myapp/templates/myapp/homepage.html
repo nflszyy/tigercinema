@@ -4,31 +4,36 @@
 {% endblock %}
 
 {% block content %}
+<!--         <div class="header-image">
+        <img src='../static/navbar.png'>
+        </div> -->
         <!-- List of uploaded documents -->
         {%load staticfiles%}
-        <div class="document-list">
             {% if documents %}
-                <ul>
+                <ul class="document-list">
                     {% for document in documents %}
-                        <li><a href="{{ document.docfile.url }}">
-                           <img src="{% static 'thumbnails/'%}{{document.thumbnail}}" alt="testing-image" style="width:300px; height:200px;">
-                           <!-- {{ document.docfile.name }} -->
-                        </a>
-                <div class="document-title">
-                    <p> {{document.title}} </p>
-                </div>
-                <div class="document-author">
-                    <p> {{document.fname}} {{document.lname}} </p>
-                </div>
-                
-                <form action="{% url 'delete' %}" method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                <input type="hidden" name="docfile" value="{{ document.pk }}" />
-                <input type="submit" value="Delete" />
-
-                </li>
-                <p> {{document.description}} </p>
-                
+                        <li>
+                        <div class="movie-container">
+                            <a href="{{ document.docfile.url }}">
+                            <img src="{% static 'thumbnails/'%}{{document.thumbnail}}" alt="{{document.title}}" style="width:240px; height:180px;">
+                            </a>
+                            <div class="document-title">
+                                <p> {{document.title}} </p>
+                            </div>
+                            <div class="document-author">
+                                <p> {{document.fname}} {{document.lname}} </p>
+                            </div>
+                            
+                            <!-- delete button -->
+                            <form action="{% url 'delete' %}" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <input type="hidden" name="docfile" value="{{ document.pk }}" />
+                            <input type="submit" value="Delete" />
+                            </form>
+                        </div>
+                        </li>
+<!--                 <p> {{document.description}} </p>
+ -->                
                     {% endfor %}
                 </ul>
             {% else %}
