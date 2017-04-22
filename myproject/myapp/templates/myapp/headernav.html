@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+        <title>Princeton File Share</title>
+        {% load staticfiles %}
+        <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}" type = "text/css"/>
+        <meta name="viewport" content = "width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Roboto font -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400i" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/static/css/headernav.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    {% block style %}
+    {% endblock %}
+
+
+    </head>
+    <div id="entire-page">
+    <body>
+        
+        <div class="nav">
+            <div class="nav-container">
+
+                <ul class="pull-left">
+                    <li><a href={% url 'homepage'%}>
+                        <div class="svg-wrapper">
+                            <svg height="40" width="170" xmlns="http://www.w3.org/2000/svg">
+                                <rect class="shape" height="40" width="170" />
+                            </svg>
+                            <div class="text">TigerCinema</div>
+                        </div>
+                    </a></li>
+                </ul>
+                <ul class="pull-right">
+                    <li><a href={%url 'homepage'%}>All Movies</a></li>
+                    <li><a href={%url 'documentary'%}>Documentaries</a></li>
+                    <li><a href={%url 'narrative'%}>Narratives</a></li>
+                    <li><a href={%url 'uploadform'%}>Upload Your Work</a></li>
+                </ul>
+            </div>
+        </div>
+        {% block content %}
+       {% endblock %}
+       </body>
+       </div>
+        
+</html>

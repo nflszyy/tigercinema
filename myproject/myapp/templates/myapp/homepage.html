@@ -1,0 +1,41 @@
+{% extends "myapp/headernav.html" %}
+{% block style %}
+    <link href="/static/css/homepage.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+        <!-- List of uploaded documents -->
+        <div class="document-list">
+            {% if documents %}
+                <ul>
+                    {% for document in documents %}
+                        <li><a href="{{ document.docfile.url }}">
+                           <img src="../../static/filmpic.jpg" alt="testing-image" style="width:300px; height:200px;">
+                           <!-- {{ document.docfile.name }} -->
+                        </a>
+                <div class="document-title">
+                    <p> {{document.title}} </p>
+                </div>
+                <div class="document-author">
+                    <p> {{document.fname}} {{document.lname}} </p>
+                </div>
+                
+                <form action="{% url 'delete' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="hidden" name="docfile" value="{{ document.pk }}" />
+                <input type="submit" value="Delete" />
+
+                </li>
+                <p> {{document.description}} </p>
+                
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No documents.</p>
+            {% endif %}
+
+            
+        </div>
+
+    </body>
+{% endblock %}

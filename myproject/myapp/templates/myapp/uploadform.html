@@ -1,0 +1,37 @@
+{% extends "myapp/headernav.html" %}
+{% block style %}
+    <link href="/static/css/uploadform.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+        <!-- Upload form. Note enctype attribute! -->
+        <div class="upload-form">
+
+            <form action="{% url "uploadform" %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <p>{{ form.non_field_errors }}</p>
+
+<!--                 <p>{{ form.docfile.label_tag }}</p>
+                <p>{{ form.docfile.help_text }}</p> -->
+
+                <p>
+                    {{ form.docfile.errors }}
+                    <div id="label">{{ form.fname.label_tag}}</div>
+                    <div id="fname">{{ form.fname}}</div>
+                    <div id="label">{{ form.lname.label_tag}}</div>
+                    <div id="lname">{{ form.lname}}</div>
+                    <div id="label">{{ form.choice.label_tag}}</div>
+                    <div id="choice">{{form.choice}}</div>
+                    <div id="label">{{ form.title.label_tag}}</div>
+                    <div id="title">{{ form.title}}</div>
+                    <div id="label">{{ form.description.label_tag}}</div>
+                    <div id="description">{{form.description}}</div>
+                    <div id="label"> {{ form.docfile.label_tag}}</div>
+                    <div id="docfile">{{form.docfile}}</div>
+                </p>
+
+                <p><input type="submit" value="Upload"/></p>
+            </form>
+        </div>
+{% endblock %}
+

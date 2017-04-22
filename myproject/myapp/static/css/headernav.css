@@ -1,0 +1,82 @@
+
+.nav a{
+	color: #FFF;
+	text-shadow: 2px 2px 5px #B0E0E6;
+	font-size: 18px;
+	font-family: 'Roboto', sans-serif; 
+	font-weight: bold;
+/*	text-transform: uppercase;
+*/	margin: 10px 20px 10px 20px;
+
+}
+
+.nav a:hover{
+	color: #FFF;
+	text-decoration: none;
+}
+
+
+.nav ul{
+	list-style-type: none;
+	text-align: center;
+	margin: 10px auto;
+}
+
+.nav li{
+	display: inline;
+}
+
+.nav-container{
+	background-color: #000;
+	overflow-y: auto;
+	position: fixed;
+	top:0;
+	left:0;
+	height: 48px;
+	width: 100%;
+}
+
+.svg-wrapper {
+  height: 60px;
+	margin: 0 auto;
+  position: relative;
+ top: 50%;
+  transform: translateY(-50%);
+  width: 190px;
+}
+
+.shape {
+  fill: transparent;
+  stroke-dasharray: 140 540;
+  stroke-dashoffset: -474;
+  stroke-width: 8px;
+  stroke: rgb(236,219,199);
+}
+
+.text {
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 22px;
+/*  letter-spacing: 4px;
+*/  line-height: 30px;
+  position: relative;
+  top: -45px;
+}
+
+@keyframes draw {
+  0% {
+    stroke-dasharray: 140 540;
+    stroke-dashoffset: -474;
+    stroke-width: 8px;
+  }
+  100% {
+    stroke-dasharray: 760;
+    stroke-dashoffset: 0;
+    stroke-width: 4px;
+  }
+}
+
+.svg-wrapper:hover .shape {
+  -webkit-animation: 0.5s draw linear forwards;
+  animation: 0.5s draw linear forwards;
+}

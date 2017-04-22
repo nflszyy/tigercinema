@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+        <title>Princeton File Share</title>
+        {% load staticfiles %}
+        <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}" type = "text/css"/>
+        <meta name="viewport" content = "width=device-width, initial-scale=1.0">
+
+
+    <!-- Roboto font -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400i" rel="stylesheet">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <link href="/static/css/welcome.css" rel="stylesheet">
+
+
+    </head>
+    <div id="entire-page">
+    <body>
+        <div class="main-heading">
+    		<h1>TigerCinema</h1>
+    		<p>Hi there! TigerCinema is an online video sharing platform for Princeton students who make movies and wish to share their work with their peers. It is created by Haochen Li, Iden Kalemaj, and Yuyan Zhao for COS 333 project.</p>
+    		<p>Please note that while you are very welcome to stream these movies on our site, downloading and sharing with other people without the permission of the author is strictly prohibited.</p>
+    		<p><a href="{%url 'homepage'%}">Now, let's get started!</a></p>
+    			<!-- <div class="main-button">
+        			<a href="{%url 'homepage'%}" class="btn btn-primary btn-lg active" role="button">Get Started</a>
+    			</div>  -->
+		</div>
+        
+    </body>
+    </div>
+        
+</html>

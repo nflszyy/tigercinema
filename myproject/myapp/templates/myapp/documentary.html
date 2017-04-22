@@ -1,0 +1,26 @@
+{% extends "myapp/headernav.html" %}
+{% block style %}
+    <link href="/static/css/homepage.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+        <!-- List of uploaded documents -->
+        <div class="document-list">
+            {% if documents %}
+                <ul>
+                    {% for document in documents %}
+                        <li><a href="{{ document.docfile.url }}">{{ document.docfile.name }}</a></li>
+                <p> {{document.fname}} {{document.lname}} </p>
+                <p> {{document.description}} </p>
+                
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No documents.</p>
+            {% endif %}
+
+            
+        </div>
+
+    </body>
+{% endblock %}
