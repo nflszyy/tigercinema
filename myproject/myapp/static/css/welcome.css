@@ -1,6 +1,6 @@
 .main-heading{
 	background: url('../filmpic.jpg') no-repeat center center;
-	background-size: 100% 100%;
+	background-size: cover;
 	margin: 0;
 	height: 700px;
 }
@@ -11,18 +11,18 @@
 /*	font-style: italic;
 */	text-shadow: 2px 2px 5px #696969;
 	margin: 0;
-	position: relative;
 	letter-spacing: 3px;
-
+	position: relative;
 	left: 50%;
 	top: 40%;
+	width: 500px;
 }
 
 .main-heading p {
 	position: relative;
 	left: 50%;
 	padding-right: 2cm;
-	max-width: 660px;
+	max-width: 600px;
 	top: 45%;
 	font-family: 'Roboto',sans-serif;
 	font-size: 16px;
@@ -34,17 +34,4 @@ a {
 }
 a:hover{
 	color:#000000;
-}
-
-.main-button {
-	position: relative;
-	top: 50%;
-	text-align: center;
-}
-
-.main-button a{
-	font-size: 30px;
-	border-radius: 16px;
-	padding: 20px 40px;
-	background-color: white;
 }
