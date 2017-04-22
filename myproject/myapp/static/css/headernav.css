@@ -19,8 +19,8 @@
 .nav ul{
 	list-style-type: none;
 	text-align: center;
-	margin: 10px auto;
-}
+/*	margin: 10px auto;
+*/}
 
 .nav li{
 	display: inline;
@@ -36,7 +36,7 @@
 	width: 100%;
 }
 
-.svg-wrapper {
+/*.svg-wrapper {
   height: 60px;
 	margin: 0 auto;
   position: relative;
@@ -57,8 +57,8 @@
   color: #fff;
   font-family: 'Roboto', sans-serif;
   font-size: 22px;
-/*  letter-spacing: 4px;
-*/  line-height: 30px;
+  letter-spacing: 4px;
+  line-height: 30px;
   position: relative;
   top: -45px;
 }
@@ -79,4 +79,4 @@
 .svg-wrapper:hover .shape {
   -webkit-animation: 0.5s draw linear forwards;
   animation: 0.5s draw linear forwards;
-}
+}*/
