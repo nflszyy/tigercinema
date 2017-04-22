@@ -5,12 +5,13 @@
 
 {% block content %}
         <!-- List of uploaded documents -->
+        {%load staticfiles%}
         <div class="document-list">
             {% if documents %}
                 <ul>
                     {% for document in documents %}
                         <li><a href="{{ document.docfile.url }}">
-                           <img src="../../static/filmpic.jpg" alt="testing-image" style="width:300px; height:200px;">
+                           <img src="{% static 'thumbnails/'%}{{document.thumbnail}}" alt="testing-image" style="width:300px; height:200px;">
                            <!-- {{ document.docfile.name }} -->
                         </a>
                 <div class="document-title">
