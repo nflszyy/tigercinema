@@ -22,14 +22,14 @@ body {
     white-space: nowrap;
 }
 
-.document-title {
+.document-title p{
 	font-family: 'Roboto Condensed', sans-serif;
 	font-size: 18px;
 	line-height: 25px;
 	text-transform: uppercase;
 }
 
-.document-author {
+.document-author p{
 	font-family: 'Roboto Condensed', sans-serif;
 	font-size: 13px;
 	line-height: 6px;
