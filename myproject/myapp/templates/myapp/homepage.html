@@ -21,7 +21,7 @@
                     {% for document in documents %}
                         <li>
                         <div class="movie-container">
-                            <a href="{{ document.docfile.url }}">
+                            <a href="../play/{{document.id}}">
                             <img src="{% static 'thumbnails/'%}{{document.thumbnail}}" alt="{{document.title}}" style="width:260px; height:160px;">
                             </a>
                             <div class="document-title">
