@@ -55,10 +55,10 @@ def uploadform(request):
             clip = VideoFileClip(os.path.join(settings.MEDIA_ROOT, newdoc.docfile.name))
             thumb_path = os.path.join(path, thumb)
 
-            clip.save_frame(thumb_path, t=0.50)
+            clip.save_frame(thumb_path, t=120)
 
             # Redirect to the document list after POST
-            return HttpResponseRedirect('myapp/uploadsuccess')
+            return HttpResponseRedirect('http://127.0.0.1:8000/myapp/homepage/')
     else:
         form = DocumentForm()  # A empty, unbound form
 
@@ -70,8 +70,6 @@ def uploadform(request):
         { 'form':form}
         )
 
-def uploadsuccess(request):
-    return render(request, 'myapp/uploadsuccess.html')
 
 def documentary(request):
  # Load documents for the list page
