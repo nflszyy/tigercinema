@@ -5,11 +5,14 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
 from django.conf import settings
+from django.db.models import Q
 
 from myproject.myapp.models import Document
 from myproject.myapp.forms import DocumentForm
 from moviepy.editor import *
 import os
+import functools
+import operator
 
 movie_count=1
 
@@ -101,5 +104,29 @@ def delete(request):
     docToDel.docfile.delete()
     docToDel.delete()
     return HttpResponseRedirect('http://127.0.0.1:8000/myapp/homepage/')
+
+
+def search(request):
+    if request.method == 'GET':
+        query = request.GET.get('search', None)
+        if query:
+            query_list = query.split()
+            documents = Document.objects.filter(
+                functools.reduce(operator.or_, 
+                                (Q(fname__icontains=q) for q in query_list)) |
+                functools.reduce(operator.or_, 
+                                (Q(lname__icontains=q) for q in query_list)) |
+                functools.reduce(operator.or_, 
+                                (Q(title__icontains=q) for q in query_list))
+                )
+            return render(
+                    request,
+                    'myapp/searchlistings.html',
+                    {'documents': documents}
+            )
+        else: return HttpResponseRedirect('http://127.0.0.1:8000/myapp/homepage/')
+
+
+
 
 
