@@ -1,6 +1,7 @@
 {% extends "myapp/headernav.html" %}
 {% block style %}
     <link href="/static/css/homepage.css" rel="stylesheet">
+    <link href="/static/css/documentary.css" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
@@ -8,15 +9,17 @@
         <img src='../static/navbar.png'>
         </div> -->
         <!-- List of uploaded documents -->
-
-        {%load staticfiles%}
+        <div class="documentaries">
+        <div class="container">
+            <h2>Documentaries</h2>
+            {%load staticfiles%}
             {% if documents %}
                 <ul class="document-list">
                     {% for document in documents %}
                         <li>
                         <div class="movie-container">
                             <a href="{{ document.docfile.url }}">
-                            <img src="{% static 'thumbnails/'%}{{document.thumbnail}}" alt="{{document.title}}" style="width:240px; height:180px;">
+                            <img src="{% static 'thumbnails/'%}{{document.thumbnail}}" alt="{{document.title}}" style="width:260px; height:160px;">
                             </a>
                             <div class="document-title">
                                 <p> {{document.title}} </p>
@@ -32,16 +35,13 @@
                             <input type="submit" value="Delete" />
                             </form>
                         </div>
-                        </li>
-<!--                 <p> {{document.description}} </p>
- -->                
+                        </li>                
                     {% endfor %}
                 </ul>
             {% else %}
                 <p>No documents.</p>
             {% endif %}
-
-            
+            </div>
         </div>
 
     </body>

@@ -28,7 +28,7 @@
 }
 
 .nav-container{
-	background-color: #000;
+	background-color: rgba(0,0,0,0.8);
 	overflow-y: auto;
 	position: fixed;
 	top:0;
@@ -53,7 +53,7 @@
 @import url(https://raw.github.com/FortAwesome/Font-Awesome/master/docs/assets/css/font-awesome.min.css);
 
 #wrap {
-  margin: 60px 20px;
+  margin: 80px 70px;
   display: inline-block;
   position: relative;
   height: 60px;
@@ -63,8 +63,8 @@
 }
 
 #wrap input[type="text"] {
-  height: 60px;
-  font-size: 40px;
+  height: 38px;
+  font-size: 26px;
   display: inline-block;
   font-family: "Roboto Condensed",sans-serif;
   font-weight: 100;
@@ -88,18 +88,19 @@
 }
 
 #wrap input[type="text"]:focus {
-  width: 400px;
+  width: 250px;
   z-index: 1;
   border-bottom: 1px solid #BBB;
   cursor: text;
 }
 #wrap input[type="submit"] {
-  height: 67px;
-  width: 63px;
+  height: 40px;
+  width: 40px;
   display: inline-block;
   color:red;
   float: right;
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADNQTFRFU1NT9fX1lJSUXl5e1dXVfn5+c3Nz6urqv7+/tLS0iYmJqampn5+fysrK39/faWlp////Vi4ZywAAABF0Uk5T/////////////////////wAlrZliAAABLklEQVR42rSWWRbDIAhFHeOUtN3/ags1zaA4cHrKZ8JFRHwoXkwTvwGP1Qo0bYObAPwiLmbNAHBWFBZlD9j0JxflDViIObNHG/Do8PRHTJk0TezAhv7qloK0JJEBh+F8+U/hopIELOWfiZUCDOZD1RADOQKA75oq4cvVkcT+OdHnqqpQCITWAjnWVgGQUWz12lJuGwGoaWgBKzRVBcCypgUkOAoWgBX/L0CmxN40u6xwcIJ1cOzWYDffp3axsQOyvdkXiH9FKRFwPRHYZUaXMgPLeiW7QhbDRciyLXJaKheCuLbiVoqx1DVRyH26yb0hsuoOFEPsoz+BVE0MRlZNjGZcRQyHYkmMp2hBTIzdkzCTc/pLqOnBrk7/yZdAOq/q5NPBH1f7x7fGP4C3AAMAQrhzX9zhcGsAAAAASUVORK5CYII=) center center no-repeat;
+  background: url(../search.png) center center no-repeat;
+  background-size: 100%;
   text-indent: -10000px;
   border: none;
   position: absolute;
@@ -107,13 +108,13 @@
   right: 0;
   z-index: 2;
   cursor: pointer;
-  opacity: 0.4;
+  opacity: 1.0;
   cursor: pointer;
   transition: opacity .4s ease;
 }
 
 #wrap input[type="submit"]:hover {
-  opacity: 0.8;
+  opacity: 1.2;
 }
 /*
 .svg-wrapper {
