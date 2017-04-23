@@ -5,6 +5,8 @@ from myproject.myapp import views
 urlpatterns = [
     url(r'^welcome/$', views.welcome, name='welcome'),
     url(r'^homepage/$', views.homepage, name='homepage'),
+    url(r'^play/(?P<user_id>\d+)/$', views.play, name='play'),
+    url(r'^play/$', views.play, name='play'),
     url(r'^documentary/$', views.documentary, name='documentary'),
     url(r'^narrative/$', views.narrative, name='narrative'),    
     url(r'^feedback/$', views.feedback, name='feedback'),

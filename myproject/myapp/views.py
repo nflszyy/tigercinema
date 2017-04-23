@@ -9,6 +9,7 @@ from django.db.models import Q
 
 from myproject.myapp.models import Document
 from myproject.myapp.forms import DocumentForm
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from moviepy.editor import *
 import os
 import functools
@@ -123,6 +124,21 @@ def search(request):
                     {'documents': documents}
             )
         else: return HttpResponseRedirect('http://127.0.0.1:8000/myapp/homepage/')
+
+def play(request, user_id):
+    documents = Document.objects.all()
+    paginator = Paginator(documents, 1) # Show 1 video per page
+    page = int(user_id) - documents[0].id + 1
+    try:
+        video = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        video= paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        video= paginator.page(paginator.num_pages)
+
+    return render(request, 'myapp/play.html', {'video': video})
 
 
 
