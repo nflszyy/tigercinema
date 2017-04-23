@@ -10,7 +10,9 @@
   letter-spacing: 1px;
 
 }
-
+#left-bar a{
+  font-size: 22px;
+}
 .nav a:hover{
 	color: #FFF;
 	text-decoration: none;
@@ -49,11 +51,9 @@
     transition: width 0.4s ease-in-out;
 }*/
 
-@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
-@import url(https://raw.github.com/FortAwesome/Font-Awesome/master/docs/assets/css/font-awesome.min.css);
 
 #wrap {
-  margin: 80px 70px;
+  margin: 80px 100px;
   display: inline-block;
   position: relative;
   height: 60px;
@@ -63,7 +63,7 @@
 }
 
 #wrap input[type="text"] {
-  height: 38px;
+  height: 40px;
   font-size: 26px;
   display: inline-block;
   font-family: "Roboto Condensed",sans-serif;

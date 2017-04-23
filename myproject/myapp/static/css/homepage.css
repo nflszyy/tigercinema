@@ -3,7 +3,6 @@
   margin: 0 auto;
 }
 
-/* Main */
 .topmovies {
   text-align: center;
   background: url("../holder3.png") no-repeat center center;
@@ -11,6 +10,10 @@
   height: 800px;
 }
 
+.allmovies {
+	background-color: #EFEFEE;
+	height: 800px;
+}
 .bigtitle {
 	position: relative;
 	top: 230px;
@@ -86,6 +89,7 @@
 	line-height: 6px;
 	text-shadow: 3px 3px 3px grey;
 	text-transform: uppercase;
+	text-align: center;
 /*	color: #696969;
 */}
 
@@ -137,6 +141,10 @@
 	text-align: center;
 	font-family: 'Roboto Condensed', sans-serif;
 }
+
+#wrap {
+  margin: 25px 100px;
+ }
 /*
 .caption-style-4{
 		list-style-type: none;

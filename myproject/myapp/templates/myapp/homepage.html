@@ -8,11 +8,11 @@
         <img src='../static/navbar.png'>
         </div> -->
         <!-- List of uploaded documents -->
-        <div class="topmovies">
-            <div class="bigtitle">
-                <h1>TigerCinema</h1>
-                <h2>Make a film. Share with your peers.</h2>
-            </div>
+    <div class="topmovies">
+        <div class="bigtitle">
+            <h1>TigerCinema</h1>
+            <h2>Make a film. Share with your peers.</h2>
+        </div>
         <div class="container">
             <h2>Top movies</h2>
             {%load staticfiles%}
@@ -44,8 +44,49 @@
             {% else %}
                 <p>No documents.</p>
             {% endif %}
-            </div>
         </div>
+    </div>
+
+    <div class="allmovies">
+        <!-- Search button -->
+        <div id="wrap">
+          <form action="{%url 'search' %}" method ="get" accept-charset="utf-8" autocomplete="off">
+          <input id="search" name="search" type="text" placeholder="Search..."><input id="search_submit" value="Rechercher" type="submit">
+          </form>
+        </div>
+        <div class="container">
+            <h2>All movies</h2>
+            {%load staticfiles%}
+            {% if documents %}
+                <ul class="document-list">
+                    {% for document in documents %}
+                        <li>
+                        <div class="movie-container">
+                            <a href="../play/{{document.id}}">
+                            <img src="{% static 'thumbnails/'%}{{document.thumbnail}}" alt="{{document.title}}" style="width:260px; height:160px;">
+                            </a>
+                            <div class="document-title">
+                                <p> {{document.title}} </p>
+                            </div>
+                            <div class="document-author">
+                                <p> {{document.fname}} {{document.lname}} </p>
+                            </div>
+                            
+                            <!-- delete button -->
+                            <form action="{% url 'delete' %}" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <input type="hidden" name="docfile" value="{{ document.pk }}" />
+                            <input type="submit" value="Delete" />
+                            </form>
+                        </div>
+                        </li>                
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No documents.</p>
+            {% endif %}
+        </div>
+    </div>
 
     </body>
 {% endblock %}

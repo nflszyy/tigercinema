@@ -1,22 +1,30 @@
 {% extends "myapp/headernav.html" %}
 {% block style %}
-    <link href="/static/css/homepage.css" rel="stylesheet">
+    <link href="/static/css/documentary.css" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
+        <!-- Search button -->
+        <div id="wrap">
+          <form action="{%url 'search' %}" method ="get" accept-charset="utf-8" autocomplete="off">
+          <input id="search" name="search" type="text" placeholder="Search..."><input id="search_submit" value="Rechercher" type="submit">
+          </form>
+        </div>
 <!--         <div class="header-image">
         <img src='../static/navbar.png'>
         </div> -->
         <!-- List of uploaded documents -->
-
-        {%load staticfiles%}
+        <div class="documentaries">
+        <div class="container">
+            {%load staticfiles%}
             {% if documents %}
                 <ul class="document-list">
+                <h2>Search Results</h2>
                     {% for document in documents %}
                         <li>
                         <div class="movie-container">
                             <a href="{{ document.docfile.url }}">
-                            <img src="{% static 'thumbnails/'%}{{document.thumbnail}}" alt="{{document.title}}" style="width:240px; height:180px;">
+                            <img src="{% static 'thumbnails/'%}{{document.thumbnail}}" alt="{{document.title}}" style="width:260px; height:160px;">
                             </a>
                             <div class="document-title">
                                 <p> {{document.title}} </p>
@@ -32,18 +40,15 @@
                             <input type="submit" value="Delete" />
                             </form>
                         </div>
-                        </li>
-<!--                 <p> {{document.description}} </p>
- -->                
+                        </li>                
                     {% endfor %}
                 </ul>
             {% else %}
-            <div class="nothing">
-            <h2>^</h2>
-            <h2>Nothing found :(</h2>
-            <img src="/../static/walle.png" alt="walle">
-                
-            </div>
+                <div class="nothing">
+                <h2>Nothing found :(</h2>
+                <img src="/../static/walle.png" alt="walle">
+                    
+                </div>
             {% endif %}
 
             

@@ -11,11 +11,11 @@
 		<ul>
 			<div class="document-list">
 				<form action="{% url 'play' %}" method="get" enctype="multipart/form-data">
-					<li><video width="600" height="600" controls><source src="{{ v.docfile.url }}" type="{{ v.content_type }}" controls> Your browser does not support the video tag.</video></li>
+					<li><video width="600" height="400" controls><source src="{{ v.docfile.url }}" type="{{ v.content_type }}" controls> Your browser does not support the video tag.</video></li>
 				</form>
 			</div>
 			<div class="document-title">
-                    <p> {{V.title}} </p>
+                    <p> {{v.title}} </p>
                 </div>
                 <div class="document-author">
                     <p> {{v.fname}} {{v.lname}} </p>

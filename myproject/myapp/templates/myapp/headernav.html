@@ -33,7 +33,7 @@
 
                 <ul class="pull-left">
                     <div class="TigerCinema">
-                    <li><a href={% url 'homepage'%}>TigerCinema</a></li>
+                    <li id="left-bar"><a href={% url 'homepage'%}>TigerCinema</a></li>
                     </div>
                 </ul>
                 <ul class="pull-right">
@@ -44,12 +44,7 @@
                 </ul>
             </div>
         </div>
-        <!-- Search button -->
-        <div id="wrap">
-          <form action="{%url 'search' %}" method ="get" accept-charset="utf-8" autocomplete="off">
-          <input id="search" name="search" type="text" placeholder="Search..."><input id="search_submit" value="Rechercher" type="submit">
-          </form>
-        </div>
+        
         {% block content %}
        {% endblock %}
     </body>

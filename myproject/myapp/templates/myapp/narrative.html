@@ -1,10 +1,15 @@
 {% extends "myapp/headernav.html" %}
 {% block style %}
-    <link href="/static/css/homepage.css" rel="stylesheet">
     <link href="/static/css/narrative.css" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
+<!-- Search button -->
+        <div id="wrap">
+          <form action="{%url 'search' %}" method ="get" accept-charset="utf-8" autocomplete="off">
+          <input id="search" name="search" type="text" placeholder="Search..."><input id="search_submit" value="Rechercher" type="submit">
+          </form>
+        </div>
 <!--         <div class="header-image">
         <img src='../static/navbar.png'>
         </div> -->
@@ -18,7 +23,7 @@
                     {% for document in documents %}
                         <li>
                         <div class="movie-container">
-                            <a href="{{ document.docfile.url }}">
+                            <a href="../play/{{document.id}}">
                             <img src="{% static 'thumbnails/'%}{{document.thumbnail}}" alt="{{document.title}}" style="width:260px; height:160px;">
                             </a>
                             <div class="document-title">
