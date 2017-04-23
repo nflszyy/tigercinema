@@ -2,6 +2,21 @@
 {% extends "myapp/headernav.html" %}
 {% block style %}
     <link href="/static/css/homepage.css" rel="stylesheet">
+  <style type = "text/css">
+
+    video::-internal-media-controls-download-button {
+    display:none;
+}
+
+video::-webkit-media-controls-enclosure {
+    overflow:hidden;
+}
+
+video::-webkit-media-controls-panel {
+    width: calc(100% + 30px); /* Adjust as needed */
+}
+</style>
+
 {% endblock %}
 
 {% block content %}
@@ -28,7 +43,8 @@
 
                 </li>
                 <p> {{v.description}} </p>
-                          {% endfor %}
+
+        {% endfor %}
         </ul>
 
 	{% else %}
