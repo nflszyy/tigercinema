@@ -10,6 +10,8 @@ from django.db.models import Q
 from myproject.myapp.models import Document
 from myproject.myapp.forms import DocumentForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+import imageio
+imageio.plugins.ffmpeg.download()
 from moviepy.editor import *
 import os
 import functools
