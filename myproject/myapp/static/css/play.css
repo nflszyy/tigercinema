@@ -1,0 +1,15 @@
+.video-container {
+	width: 640px;
+	height: 365px;
+	position: relative;
+	margin: 0 auto;
+	top: 50px;
+	left: 50px;
+}
+
+.allinfo {
+	text-align: center;
+  background: url("../holder3.png") no-repeat center center;
+  background-size: cover;
+  height: 800px;
+}
