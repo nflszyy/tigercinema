@@ -105,14 +105,13 @@ DATABASES = {
 }
 }
 
-<<<<<<< HEAD
+
 CAS_SERVER_URL = 'https://fed.princeton.edu/cas/'
 AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend', 'django_cas_ng.backends.CASBackend',)
-=======
+
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
->>>>>>> 667847337a8f91e97e0bbd47449b8fd25c94fba5
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
