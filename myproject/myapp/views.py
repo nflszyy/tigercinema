@@ -19,6 +19,7 @@ import operator
 
 movie_count=1
 
+@login_required(login_url='/accounts/login/',redirect_field_name='/homepage/')
 def homepage(request):
 
     # Load documents for the list page
