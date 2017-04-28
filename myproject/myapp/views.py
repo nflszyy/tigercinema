@@ -19,7 +19,7 @@ import operator
 
 movie_count=1
 
-@login_required(login_url='/accounts/login/',redirect_field_name='/homepage/')
+@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def homepage(request):
 
     # Load documents for the list page
@@ -31,6 +31,8 @@ def homepage(request):
         'myapp/homepage.html',
         {'documents': documents}
     )
+
+@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def feedback(request):
     return render(request,'myapp/feedback.html')
 
@@ -38,6 +40,7 @@ def feedback(request):
 def welcome(request):
     return render(request, 'myapp/welcome.html')
 
+@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def uploadform(request):
     global movie_count
     if request.method == 'POST':
@@ -75,7 +78,7 @@ def uploadform(request):
         { 'form':form}
         )
 
-
+@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def documentary(request):
  # Load documents for the list page
     documents = Document.objects.filter(choice__exact='2')
@@ -86,6 +89,8 @@ def documentary(request):
         'myapp/documentary.html',
         {'documents': documents}
     )
+
+@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def narrative(request):
  # Load documents for the list page
     documents = Document.objects.filter(choice__exact='1')
@@ -99,6 +104,7 @@ def narrative(request):
 
 
 # http://stackoverflow.com/questions/20205137/how-to-delete-files-in-django
+@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def delete(request):
     if request.method != 'POST':
         raise Http404
@@ -108,7 +114,7 @@ def delete(request):
     docToDel.delete()
     return HttpResponseRedirect('/myapp/homepage/')
 
-
+@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def search(request):
     if request.method == 'GET':
         query = request.GET.get('search', None)
@@ -129,6 +135,7 @@ def search(request):
             )
         else: return HttpResponseRedirect('/myapp/homepage/')
 
+@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def play(request, user_id):
     documents = Document.objects.all()
     paginator = Paginator(documents, 1) # Show 1 video per page
