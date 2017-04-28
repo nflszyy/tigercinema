@@ -18,7 +18,7 @@ import functools
 import operator
 
 movie_count=1
-
+@login_required
 def homepage(request):
 
     # Load documents for the list page
@@ -33,8 +33,10 @@ def homepage(request):
 def feedback(request):
     return render(request,'myapp/feedback.html')
 
+@login_required
 def welcome(request):
     return render(request, 'myapp/welcome.html')
+
 @login_required
 def uploadform(request):
     global movie_count
