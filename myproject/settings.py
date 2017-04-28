@@ -37,7 +37,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'myproject.myapp'
+    'myproject.myapp',
+    'django_cas_ng',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -49,6 +50,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'django_cas_ng.middleware.CASMiddleware',
 )
 
 ROOT_URLCONF = 'myproject.urls'
@@ -85,24 +87,25 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 DATABASES = {
     'default': {
         # Haochen's settings
-        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        # 'NAME': 'test1',
-        # 'USER': 'iamauser',
-        # 'PASSWORD': 'md5b616d86bca63a780a9f5561c0a40ca10',
-        # 'HOST': 'localhost',
-        # 'PORT': '5432',
+         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+         'NAME': 'test1',
+         'USER': 'iamauser',
+         'PASSWORD': 'md5b616d86bca63a780a9f5561c0a40ca10',
+         'HOST': 'localhost',
+         'PORT': '5432',
 
         # Yuyan's settings
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        # 'NAME': 'postgres',
+        # 'USER': 'postgres',
+        # 'PASSWORD': 'password',
+        # 'HOST': 'localhost',
+        # 'PORT': '5432',
 }
 }
 
-
+CAS_SERVER_URL = 'https://fed.princeton.edu/cas/'
+AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend', 'django_cas_ng.backends.CASBackend',)
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
