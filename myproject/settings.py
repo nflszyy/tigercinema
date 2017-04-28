@@ -30,6 +30,7 @@ ALLOWED_HOSTS = ['*']
 
 CAS_SERVER_URL = 'https://fed.princeton.edu/cas/'
 AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend', 'django_cas_ng.backends.CASBackend',)
+CAS_REDIRECT_URL = 'https://pure-temple-10026.herokuapp.com/myapp/homepage/'
 # Application definition
 
 INSTALLED_APPS = (
