@@ -28,6 +28,8 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 
+CAS_SERVER_URL = 'https://fed.princeton.edu/cas/'
+AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend', 'django_cas_ng.backends.CASBackend',)
 # Application definition
 
 INSTALLED_APPS = (
@@ -106,8 +108,6 @@ DATABASES = {
 }
 
 
-CAS_SERVER_URL = 'https://fed.princeton.edu/cas/'
-AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend', 'django_cas_ng.backends.CASBackend',)
 
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
