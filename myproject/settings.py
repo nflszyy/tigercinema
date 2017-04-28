@@ -50,11 +50,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-<<<<<<< HEAD
     'django_cas_ng.middleware.CASMiddleware',
-=======
     'whitenoise.middleware.WhiteNoiseMiddleware',
->>>>>>> 667847337a8f91e97e0bbd47449b8fd25c94fba5
 )
 
 ROOT_URLCONF = 'myproject.urls'
