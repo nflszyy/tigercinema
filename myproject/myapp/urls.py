@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.conf.urls import url
 from myproject.myapp import views
+import django_cas_ng.views
 
 urlpatterns = [
     url(r'^welcome/$', views.welcome, name='welcome'),
