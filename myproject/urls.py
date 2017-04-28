@@ -9,7 +9,5 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^myapp/', include('myproject.myapp.urls')),
-    url(r'^$', RedirectView.as_view(url='/myapp/welcome/', permanent=False)),
-    url(r'accounts/login/$', django_cas_ng.views.login),
-    url(r'accounts/logout/$', django_cas_ng.views.logout),
+    url(r'^$', RedirectView.as_view(url='/myapp/login/', permanent=False)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
