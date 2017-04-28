@@ -35,7 +35,7 @@ def feedback(request):
 
 def welcome(request):
     return render(request, 'myapp/welcome.html')
-@login_required 
+
 def uploadform(request):
     global movie_count
     if request.method == 'POST':
