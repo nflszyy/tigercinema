@@ -16,4 +16,5 @@ urlpatterns = [
     url(r'search/', views.search, name='search'),
     url(r'login/$', django_cas_ng.views.login,name='login'),
     url(r'logout/$', django_cas_ng.views.logout,name='logout'),
+    url(r'^accounts/callback$', django_cas_ng.views.callback, name='cas_ng_proxy_callback'),
 ]
