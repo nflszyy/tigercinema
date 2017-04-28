@@ -6,7 +6,7 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
 from django.conf import settings
 from django.db.models import Q
-
+from django.contrib.auth.decorators import login_required
 from myproject.myapp.models import Document
 from myproject.myapp.forms import DocumentForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
