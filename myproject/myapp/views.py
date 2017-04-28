@@ -10,6 +10,8 @@ from django.db.models import Q
 from myproject.myapp.models import Document
 from myproject.myapp.forms import DocumentForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+import imageio
+imageio.plugins.ffmpeg.download()
 from moviepy.editor import *
 import os
 import functools
@@ -59,7 +61,7 @@ def uploadform(request):
 
 
             # Redirect to the document list after POST
-            return HttpResponseRedirect('http://127.0.0.1:8000/myapp/homepage/')
+            return HttpResponseRedirect('/myapp/homepage/')
     else:
         form = DocumentForm()  # A empty, unbound form
 
@@ -102,7 +104,7 @@ def delete(request):
     docToDel = get_object_or_404(Document, pk = docId)
     docToDel.docfile.delete()
     docToDel.delete()
-    return HttpResponseRedirect('http://127.0.0.1:8000/myapp/homepage/')
+    return HttpResponseRedirect('/myapp/homepage/')
 
 
 def search(request):
@@ -123,7 +125,7 @@ def search(request):
                     'myapp/searchlistings.html',
                     {'documents': documents}
             )
-        else: return HttpResponseRedirect('http://127.0.0.1:8000/myapp/homepage/')
+        else: return HttpResponseRedirect('/myapp/homepage/')
 
 def play(request, user_id):
     documents = Document.objects.all()
