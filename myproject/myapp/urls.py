@@ -14,6 +14,6 @@ urlpatterns = [
     url(r'^uploadform/$', views.uploadform, name='uploadform'),    
     url(r'^delete/$', views.delete, name='delete'), 
     url(r'search/', views.search, name='search'),
-    url(r'accounts/login/$', django_cas_ng.views.login,name='login'),
-    url(r'accounts/logout/$', django_cas_ng.views.logout,name='logout'),
+    url(r'login/$', django_cas_ng.views.login,name='login'),
+    url(r'logout/$', django_cas_ng.views.logout,name='logout'),
 ]
