@@ -10,6 +10,6 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^myapp/', include('myproject.myapp.urls')),
     url(r'^$', RedirectView.as_view(url='/myapp/welcome/', permanent=False)),
-    url(r'accounts/login/$', django_cas_ng.views.login,name='login'),
-    url(r'accounts/logout/$', django_cas_ng.views.logout,RedirectView.as_view(url='/myapp/welcome/', permanent=False),name='logout'),
+    url(r'accounts/login/$', django_cas_ng.views.login,name='cas_ng_login'),
+    url(r'accounts/logout/$', django_cas_ng.views.logout,RedirectView.as_view(url='/myapp/welcome/', permanent=False),name='cas_ng_logout'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
