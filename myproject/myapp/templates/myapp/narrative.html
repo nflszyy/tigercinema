@@ -1,6 +1,10 @@
 {% extends "myapp/headernav.html" %}
 {% block style %}
+{% load ratings %}
+{%load staticfiles%}
     <link href="/static/css/narrative.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+    <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -17,10 +21,10 @@
         <div class="narratives">
         <div class="container">
             <h2>Narratives</h2>
-            {%load staticfiles%}
             {% if documents %}
                 <ul class="document-list">
                     {% for document in documents %}
+                    {% ratings document %}
                         <li>
                         <div class="movie-container">
                             <a href="../play/{{document.id}}">
