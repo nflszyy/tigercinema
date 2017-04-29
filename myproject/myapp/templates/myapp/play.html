@@ -1,7 +1,7 @@
 
 {% extends "myapp/headernav.html" %}
 {% block style %}
-    <link href="/static/css/play.css" rel="stylesheet">
+  <link href="/static/css/play.css" rel="stylesheet">
   <style type = "text/css">
 
     video::-internal-media-controls-download-button {
@@ -40,6 +40,12 @@ video::-webkit-media-controls-panel {
                 <p> {{v.description}} </p>
             </div>
 
+            <div>
+                <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+                <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
+            </div>
+
+
         {% endfor %}
 
 	{% else %}
@@ -47,3 +53,4 @@ video::-webkit-media-controls-panel {
     {% endif %}
 </div>
 {% endblock %}
+
