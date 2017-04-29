@@ -24,6 +24,7 @@ video::-webkit-media-controls-panel {
 	{%load staticfiles%}
 	{% if video %}
 		{% for v in video %}
+        {% ratings v %}
 			<div class="video-container">
 					<video id="video" width="640" height="365" controls>
                         <source src="{{ v.docfile.url }}" type="{{ v.content_type }}" controls>
@@ -31,6 +32,7 @@ video::-webkit-media-controls-panel {
                     </video>
 			</div>
             <div class="document-title">
+            <
                 <p> Title: {{v.title}} </p>
             </div>
             <div class="document-author">

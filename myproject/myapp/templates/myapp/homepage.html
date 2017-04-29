@@ -65,6 +65,7 @@
             {% if documents %}
                 <ul class="document-list">
                     {% for document in documents %}
+                    {% ratings document %}
                         <li>
                         <div class="movie-container">
                             <a href="../play/{{document.id}}">
