@@ -151,8 +151,6 @@ def play(request, user_id):
 
     return render(request, 'myapp/play.html', {'video': video})
 
-def logout(request):
-    return HttpResponseRedirect('/accounts/logout/')
 
 
 
