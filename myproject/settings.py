@@ -30,7 +30,7 @@ ALLOWED_HOSTS = ['*']
 
 CAS_SERVER_URL = 'https://fed.princeton.edu/cas/'
 AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend', 'django_cas_ng.backends.CASBackend',)
-CAS_REDIRECT_URL = 'https://pure-temple-10026.herokuapp.com/myapp/welcome/'
+
 
 # Application definition
 
@@ -43,7 +43,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'myproject.myapp',
     'django_cas_ng',
-    'star_ratings'
+    'star_ratings',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -79,6 +79,7 @@ TEMPLATES = [
                 'django.template.context_processors.static',
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
+                'django.core.context_processors.request',
             ],
         },
     },
@@ -93,20 +94,20 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 DATABASES = {
     'default': {
         # Haochen's settings
-        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        # 'NAME': 'test1',
-        # 'USER': 'iamauser',
-        # 'PASSWORD': 'md5b616d86bca63a780a9f5561c0a40ca10',
-        # 'HOST': 'localhost',
-        # 'PORT': '5432',
-
-        # Yuyan's settings
          'ENGINE': 'django.db.backends.postgresql_psycopg2',
-         'NAME': 'postgres',
-         'USER': 'postgres',
-         'PASSWORD': 'password',
+         'NAME': 'test1',
+         'USER': 'iamauser',
+         'PASSWORD': 'md5b616d86bca63a780a9f5561c0a40ca10',
          'HOST': 'localhost',
          'PORT': '5432',
+
+        # Yuyan's settings
+        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        # 'NAME': 'postgres',
+        # 'USER': 'postgres',
+        # 'PASSWORD': 'password',
+        # 'HOST': 'localhost',
+        # 'PORT': '5432',
 }
 }
 
