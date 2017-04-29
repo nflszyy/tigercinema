@@ -1,7 +1,11 @@
 
 {% extends "myapp/headernav.html" %}
 {% block style %}
+{% load ratings %}
+{%load staticfiles%}
   <link href="/static/css/play.css" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+  <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
   <style type = "text/css">
 
     video::-internal-media-controls-download-button {
@@ -21,7 +25,6 @@ video::-webkit-media-controls-panel {
 
 {% block content %}
 <div class="allinfo">
-	{%load staticfiles%}
 	{% if video %}
 		{% for v in video %}
         {% ratings v %}
