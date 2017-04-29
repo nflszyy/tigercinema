@@ -1,7 +1,7 @@
 
 {% extends "myapp/headernav.html" %}
 {% block style %}
-    <link href="/static/css/homepage.css" rel="stylesheet">
+    <link href="/static/css/play.css" rel="stylesheet">
   <style type = "text/css">
 
     video::-internal-media-controls-download-button {
@@ -20,35 +20,30 @@ video::-webkit-media-controls-panel {
 {% endblock %}
 
 {% block content %}
+<div class="allinfo">
 	{%load staticfiles%}
 	{% if video %}
 		{% for v in video %}
-		<ul>
-			<div class="document-list">
-				<form action="{% url 'play' %}" method="get" enctype="multipart/form-data">
-					<li><video width="600" height="400" controls><source src="{{ v.docfile.url }}" type="{{ v.content_type }}" controls> Your browser does not support the video tag.</video></li>
-				</form>
+			<div class="video-container">
+					<video id="video" width="640" height="365" controls>
+                        <source src="{{ v.docfile.url }}" type="{{ v.content_type }}" controls>
+                        <p>Your browser does not support the video tag.</p>
+                    </video>
 			</div>
-			<div class="document-title">
-                    <p> {{v.title}} </p>
-                </div>
-                <div class="document-author">
-                    <p> {{v.fname}} {{v.lname}} </p>
-                </div>
-                
-                <form action="{% url 'delete' %}" method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                <input type="hidden" name="docfile" value="{{ v.pk }}" />
-                <input type="submit" value="Delete" />
-
-                </li>
+            <div class="document-title">
+                <p> {{v.title}} </p>
+            </div>
+            <div class="document-author">
+                <p> {{v.fname}} {{v.lname}} </p>
+            </div>
+            <div class="document-description">
                 <p> {{v.description}} </p>
+            </div>
 
         {% endfor %}
-        </ul>
 
 	{% else %}
       <p>No videos.</p>
     {% endif %}
-
+</div>
 {% endblock %}

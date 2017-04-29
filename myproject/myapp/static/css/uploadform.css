@@ -1,12 +1,30 @@
-body {
-/* 	background: url('../princeton.JPG') no-repeat center center;
-	*/
-	background-color: #EFEFEE;  	
-	margin: 0;
-  	padding: 0px 60px;
+
+.fullpage {
+  text-align: left;
+  background: url("../holder3.png") no-repeat center center;
+  background-size: cover;
+  height: 800px;
 }
 
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+background-color: rgba(255,255,255,0.5);
+	border: 2px solid grey;
+	border-radius: 10px;
+	height: 700px;
+  position: relative;
+  top: 60px;
+}
 
+.fieldWrapper {
+  left: 0;
+  position: relative;
+  padding: 10px;
+  top: 55px;
+  width: 100%;
+  display: block;
+}
 
 .upload-form {
 /*	border: 2px dashed black;
@@ -15,7 +33,7 @@ body {
 	padding: 30px;
   left: 0;
   position: relative;
-  top: 55px;
+  top: 30px;
   width: 100%;
   display: block;
   z-index:0;
@@ -24,6 +42,13 @@ body {
 #label {
 	font-family: 'Roboto',sans-serif;
 	font-size: 16px;
+	text-shadow: 2px 2px 3px white;
 }
 
+.walle img {
+    position: absolute;
+    top: 0; bottom:0; left: 0; right:0;
+    margin: auto;
+    width:40%;
+}
 

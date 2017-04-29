@@ -6,10 +6,12 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
 from django.conf import settings
 from django.db.models import Q
-
+from django.contrib.auth.decorators import login_required
 from myproject.myapp.models import Document
 from myproject.myapp.forms import DocumentForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+import imageio
+imageio.plugins.ffmpeg.download()
 from moviepy.editor import *
 import os
 import functools
@@ -17,6 +19,7 @@ import operator
 
 movie_count=1
 
+@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def homepage(request):
 
     # Load documents for the list page
@@ -28,12 +31,16 @@ def homepage(request):
         'myapp/homepage.html',
         {'documents': documents}
     )
+
+@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def feedback(request):
     return render(request,'myapp/feedback.html')
+
 
 def welcome(request):
     return render(request, 'myapp/welcome.html')
 
+@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def uploadform(request):
     global movie_count
     if request.method == 'POST':
@@ -59,7 +66,7 @@ def uploadform(request):
 
 
             # Redirect to the document list after POST
-            return HttpResponseRedirect('http://127.0.0.1:8000/myapp/homepage/')
+            return HttpResponseRedirect('/myapp/homepage/')
     else:
         form = DocumentForm()  # A empty, unbound form
 
@@ -71,7 +78,7 @@ def uploadform(request):
         { 'form':form}
         )
 
-
+@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def documentary(request):
  # Load documents for the list page
     documents = Document.objects.filter(choice__exact='2')
@@ -82,6 +89,8 @@ def documentary(request):
         'myapp/documentary.html',
         {'documents': documents}
     )
+
+@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def narrative(request):
  # Load documents for the list page
     documents = Document.objects.filter(choice__exact='1')
@@ -95,6 +104,7 @@ def narrative(request):
 
 
 # http://stackoverflow.com/questions/20205137/how-to-delete-files-in-django
+@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def delete(request):
     if request.method != 'POST':
         raise Http404
@@ -102,9 +112,9 @@ def delete(request):
     docToDel = get_object_or_404(Document, pk = docId)
     docToDel.docfile.delete()
     docToDel.delete()
-    return HttpResponseRedirect('http://127.0.0.1:8000/myapp/homepage/')
+    return HttpResponseRedirect('/myapp/homepage/')
 
-
+@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def search(request):
     if request.method == 'GET':
         query = request.GET.get('search', None)
@@ -123,8 +133,9 @@ def search(request):
                     'myapp/searchlistings.html',
                     {'documents': documents}
             )
-        else: return HttpResponseRedirect('http://127.0.0.1:8000/myapp/homepage/')
+        else: return HttpResponseRedirect('/myapp/homepage/')
 
+@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def play(request, user_id):
     documents = Document.objects.all()
     paginator = Paginator(documents, 1) # Show 1 video per page
