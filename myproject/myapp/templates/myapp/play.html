@@ -27,7 +27,6 @@ video::-webkit-media-controls-panel {
 <div class="allinfo">
 	{% if video %}
 		{% for v in video %}
-        {% ratings v %}
 			<div class="video-container">
 					<video id="video" width="640" height="365" controls>
                         <source src="{{ v.docfile.url }}" type="{{ v.content_type }}" controls>
@@ -44,6 +43,7 @@ video::-webkit-media-controls-panel {
             <div class="document-description">
                 <p> Description: {{v.description}} </p>
             </div>
+                    {% ratings v %}
 
             <div>
                 <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
