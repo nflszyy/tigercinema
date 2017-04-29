@@ -41,7 +41,7 @@
                     <li><a href={%url 'documentary'%}>Documentaries</a></li>
                     <li><a href={%url 'narrative'%}>Narratives</a></li>
                     <li><a href={%url 'uploadform'%}>Upload Your Work</a></li>
-                    <li><a href={% url 'cas_ng_logout' %}>Logout</a></li>
+                    <li><a href="{% url 'cas_ng_logout' %}?next={% url 'welcome' %}">Logout</a></li>
                 </ul>
             </div>
         </div>
