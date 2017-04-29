@@ -2,8 +2,8 @@
 {% block style %}
 {% load ratings %}
     <link href="/static/css/documentary.css" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
-    <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
+    <!-- <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}"> -->
+    <!-- <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script> -->
 {% endblock %}
 
 {% block content %}
@@ -20,7 +20,7 @@
         <div class="documentaries">
         <div class="container">
             <h2>Documentaries</h2>
-            {%load staticfiles%}
+            <!-- {%load staticfiles%} -->
             {% if documents %}
                 <ul class="document-list">
                     {% for document in documents %}
