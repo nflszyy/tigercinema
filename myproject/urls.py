@@ -11,5 +11,5 @@ urlpatterns = [
     url(r'^myapp/', include('myproject.myapp.urls')),
     url(r'^$', RedirectView.as_view(url='/myapp/welcome/', permanent=False)),
     url(r'accounts/login/$', django_cas_ng.views.login,name='cas_ng_login'),
-    url(r'accounts/logout/$', django_cas_ng.views.logout,{'next_page': '/myapp/welcome'}),
+    url(r'accounts/logout/$', django_cas_ng.views.logout,name='cas_ng_logout'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
