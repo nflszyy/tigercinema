@@ -1,4 +1,5 @@
 {% extends "myapp/headernav.html" %}
+{% load ratings %}
 {% block style %}
     <link href="/static/css/documentary.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
@@ -6,7 +7,6 @@
 {% endblock %}
 
 {% block content %}
-{% load ratings %}
     <!-- Search button -->
         <div id="wrap">
           <form action="{%url 'search' %}" method ="get" accept-charset="utf-8" autocomplete="off">
@@ -24,6 +24,7 @@
             {% if documents %}
                 <ul class="document-list">
                     {% for document in documents %}
+                    {% ratings document %}
                         <li>
                         <div class="movie-container">
                             <a href="../play/{{document.id}}">
