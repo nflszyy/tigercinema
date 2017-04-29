@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'^$', RedirectView.as_view(url='/myapp/welcome/', permanent=False)),
     url(r'accounts/login/$', django_cas_ng.views.login,name='login'),
     url(r'accounts/logout/$', django_cas_ng.views.logout,name='logout'),
+    url(r'^ratings/', include('star_ratings.urls', namespace='ratings', app_name='ratings')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
