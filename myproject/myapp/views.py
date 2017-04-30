@@ -16,6 +16,8 @@ from moviepy.editor import *
 import os
 import functools
 import operator
+from django.contrib.contenttypes.fields import GenericRelation
+from star_ratings.models import Rating
 
 movie_count=1
 

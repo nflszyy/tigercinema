@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from .validators import validate_mime_type
+from django.contrib.contenttypes.fields import GenericRelation
+from star_ratings.models import Rating
 
 
 class Document(models.Model):
@@ -15,3 +17,6 @@ class Document(models.Model):
             )
     choice = models.CharField(max_length = 1,choices=GENDER_CHOICES,default = '1')
     docfile = models.FileField(upload_to='documents/%Y/%m/%d', validators=[validate_mime_type])
+    ratings = GenericRelation(Rating, related_query_name='documents')
+
+Document.objects.filter(ratings__isnull=False).order_by('ratings__average')
