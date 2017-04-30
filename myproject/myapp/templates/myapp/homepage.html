@@ -22,8 +22,7 @@
             {%load staticfiles%}
             {% if documents %}
                 <ul class="document-list">
-                    {% for document in rateddocuments %}
-                    {% if loop.index <= 5 %}
+                    {% for document in rateddocuments[:5] %}
                         <li>
                         <div class="movie-container">
                             <a href="../play/{{document.id}}">
@@ -43,8 +42,7 @@
                             <input type="submit" value="Delete" />
                             </form>
                         </div>
-                        </li>
-                    {% endif %}                
+                        </li>               
                     {% endfor %}
                 </ul>
             {% else %}
