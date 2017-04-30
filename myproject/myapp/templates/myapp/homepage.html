@@ -22,7 +22,7 @@
             {%load staticfiles%}
             {% if documents %}
                 <ul class="document-list">
-                    {% for document in rateddocuments[:5] %}
+                    {% for document in rateddocuments %}
                         <li>
                         <div class="movie-container">
                             <a href="../play/{{document.id}}">
