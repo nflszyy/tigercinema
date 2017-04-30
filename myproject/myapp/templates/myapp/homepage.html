@@ -23,7 +23,7 @@
             {% if documents %}
                 <ul class="document-list">
                     {% for document in rateddocuments %}
-                    {% ratings document %}
+                    {% if loop.index <= 5 %}
                         <li>
                         <div class="movie-container">
                             <a href="../play/{{document.id}}">
@@ -43,7 +43,8 @@
                             <input type="submit" value="Delete" />
                             </form>
                         </div>
-                        </li>                
+                        </li>
+                    {% endif %}                
                     {% endfor %}
                 </ul>
             {% else %}
