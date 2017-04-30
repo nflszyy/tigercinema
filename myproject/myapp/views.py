@@ -26,7 +26,7 @@ def homepage(request):
 
     # Load documents for the list page
     documents = Document.objects.all()
-    rateddocuments = Document.objects.filter(ratings__isnull=False).order_by('ratings__average')[:5]
+    rateddocuments = Document.objects.filter(ratings__isnull=False).order_by('ratings__average')[0:5]
 
     # Render list page with the documents and the form
     return render(
