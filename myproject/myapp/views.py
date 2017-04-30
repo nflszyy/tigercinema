@@ -26,12 +26,13 @@ def homepage(request):
 
     # Load documents for the list page
     documents = Document.objects.all()
+    rateddocuments = Document.objects.filter(ratings__isnull=False).order_by('ratings__average')
 
     # Render list page with the documents and the form
     return render(
         request,
         'myapp/homepage.html',
-        {'documents': documents}
+        {'documents': documents, 'rateddocuments': rateddocuments}
     )
 
 #@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
