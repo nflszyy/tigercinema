@@ -1,17 +1,16 @@
 
 .fullpage {
   text-align: left;
-  background: url("../holder3.png") no-repeat center center;
-  background-size: cover;
+  background: background-color: #EFEFEE;
   height: 800px;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-background-color: rgba(255,255,255,0.5);
-	border: 2px solid grey;
-	border-radius: 10px;
+/*background-color: rgba(255,255,255,0.5);
+*//*	border: 2px solid grey;
+	border-radius: 10px;*/
 	height: 700px;
   position: relative;
   top: 60px;

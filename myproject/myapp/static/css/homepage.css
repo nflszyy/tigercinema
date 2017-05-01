@@ -7,12 +7,11 @@
   text-align: center;
   background: url("../holder3.png") no-repeat center center;
   background-size: cover;
-  height: 800px;
+  height: 820px;
 }
 
 .allmovies {
 	background-color: #EFEFEE;
-	height: 800px;
 }
 .bigtitle {
 	position: relative;
@@ -42,7 +41,7 @@
 	background-color: rgba(255,255,255,0.5);
 	border: 2px solid grey;
 	border-radius: 10px;
-	height: 300px;
+	height: 330px;
   position: relative;
   top: 320px;
 }
@@ -58,9 +57,26 @@
 
 .document-list {
 	box-sizing: border-box;
-	padding: 0px 0px;
+	overflow: hidden;
+	height: 100%;
+	width: 100%;
+	padding-right: 40px;
 }
 
+.parent {
+	height: 100%;
+	width: 100%;
+	padding: 0px 0px;
+	overflow: hidden;
+}
+
+.topmovies .document-list {
+	height: 250px;
+}
+
+/*.allmovies .document-list {
+	height: 700px;
+}*/
 
 .document-list li {
 	display: inline-block;
@@ -78,7 +94,6 @@
 	font-weight: 400;
 	font-size: 18px;
 	line-height: 25px;
-	text-shadow: 3px 3px 5px grey;
 	text-transform: uppercase;
 	text-align: center;
 }
@@ -87,19 +102,20 @@
 	font-family: 'Roboto Condensed', sans-serif;
 	font-size: 13px;
 	line-height: 6px;
-	text-shadow: 3px 3px 3px grey;
 	text-transform: uppercase;
 	text-align: center;
-/*	color: #696969;
-*/}
+}
 
+.ratings {
+	text-align: center;
+}
 
 .movie-container {
 
-	/*background-color: #FFF;
-	border: 1px solid #CCC;*/
-	width:270px;
-	height: 220px;
+	background-color: #FFF;
+	border: 1px solid #CCC;
+	width:290px;
+	height: 230px;
 	margin:5px;
 	padding: 12px;	
 }

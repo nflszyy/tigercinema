@@ -8,24 +8,19 @@
 /* Main */
 .documentaries {
   text-align: center;
-  background: url("../holder3.png") no-repeat center center;
-  background-size: cover;
-  height: 800px;
+  background: background-color: #EFEFEE;
+	height: 800px;
 }
 
 .documentaries .container {
-	background-color: rgba(255,255,255,0.5);
-	border: 2px solid grey;
-	border-radius: 10px;
-	height: 700px;
   position: relative;
   top: 60px;
 }
 
 .container h2 {
 	text-align: left;
-	text-shadow: 3px 3px 5px grey;
-	font-family: 'Roboto Condensed', sans-serif;
+/*	text-shadow: 3px 3px 5px grey;
+*/	font-family: 'Roboto Condensed', sans-serif;
 	margin-left: 15px;
 	font-weight: 400;
 	text-transform: uppercase;
@@ -53,8 +48,8 @@
 	font-weight: 400;
 	font-size: 18px;
 	line-height: 25px;
-	text-shadow: 3px 3px 5px grey;
-	text-align: center;
+/*	text-shadow: 3px 3px 5px grey;
+*/	text-align: center;
 	text-transform: uppercase;
 }
 
@@ -62,8 +57,8 @@
 	font-family: 'Roboto Condensed', sans-serif;
 	font-size: 13px;
 	line-height: 6px;
-	text-shadow: 3px 3px 3px grey;
-	text-transform: uppercase;
+/*	text-shadow: 3px 3px 3px grey;
+*/	text-transform: uppercase;
 /*	color: #696969;
 */}
 
@@ -115,6 +110,6 @@
 	position: relative;
 	margin-top: 80px;
 	text-align: center;
-	text-shadow: 3px 3px 3px white;
-	font-family: 'Roboto Condensed', sans-serif;
+/*	text-shadow: 3px 3px 3px white;
+*/	font-family: 'Roboto Condensed', sans-serif;
 }

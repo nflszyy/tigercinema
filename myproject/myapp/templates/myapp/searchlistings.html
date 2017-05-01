@@ -14,10 +14,11 @@
         <img src='../static/navbar.png'>
         </div> -->
         <!-- List of uploaded documents -->
-        <div class="documentaries">
-        <div class="container">
+ 
             {%load staticfiles%}
             {% if documents %}
+            <div class="documentaries">
+            <div class="container">
                 <ul class="document-list">
                 <h2>Search Results</h2>
                     {% for document in documents %}
@@ -43,16 +44,18 @@
                         </li>                
                     {% endfor %}
                 </ul>
+                </div>
+                </div>
             {% else %}
+            <div class="container">
                 <div class="nothing">
                 <h2>Nothing found :(</h2>
                 <img src="/../static/walle.png" alt="walle">
                     
                 </div>
+            </div>
             {% endif %}
 
-            
-        </div>
 
     </body>
 {% endblock %}

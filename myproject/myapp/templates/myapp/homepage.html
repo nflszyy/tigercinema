@@ -31,8 +31,11 @@
                             <div class="document-title">
                                 <p> {{document.title}} </p>
                             </div>
-                            <div class="document-author">
+<!--                             <div class="document-author">
                                 <p> {{document.fname}} {{document.lname}} </p>
+                            </div> -->
+                            <div class="ratings">
+                                {% ratings document icon_height=15 icon_width=15%}
                             </div>
                             
                             <!-- delete button -->
@@ -62,9 +65,10 @@
             <h2>All movies</h2>
             {%load staticfiles%}
             {% if documents %}
+            <div class="parent">
                 <ul class="document-list">
                     {% for document in documents %}
-                    {% ratings document %}
+                    
                         <li>
                         <div class="movie-container">
                             <a href="../play/{{document.id}}">
@@ -73,8 +77,11 @@
                             <div class="document-title">
                                 <p> {{document.title}} </p>
                             </div>
-                            <div class="document-author">
+<!--                             <div class="document-author">
                                 <p> {{document.fname}} {{document.lname}} </p>
+                            </div> -->
+                            <div class="ratings">
+                                {% ratings document icon_height=15 icon_width=15%}
                             </div>
                             
                             <!-- delete button -->
@@ -87,6 +94,7 @@
                         </li>                
                     {% endfor %}
                 </ul>
+            </div>
             {% else %}
                 <p>No documents.</p>
             {% endif %}
