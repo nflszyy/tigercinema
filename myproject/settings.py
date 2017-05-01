@@ -119,6 +119,37 @@ DATABASES['default'].update(db_from_env)
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
+
+AWS_HEADERS = {  # see http://developer.yahoo.com/performance/rules.html#expires
+        'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+        'Cache-Control': 'max-age=94608000',
+    }
+
+AWS_STORAGE_BUCKET_NAME = 'tigercinema'
+AWS_ACCESS_KEY_ID = 'AKIAJGCD2PJO7ZXDNA3Q'
+AWS_SECRET_ACCESS_KEY = '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'
+
+    # Tell django-storages that when coming up with the URL for an item in S3 storage, keep
+    # it simple - just use this domain plus the path. (If this isn't set, things get complicated).
+    # This controls how the `static` template tag from `staticfiles` gets expanded, if you're using it.
+    # We also use it in the next setting.
+
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+STATICFILES_LOCATION = 'static'
+STATICFILES_STORAGE = 'myproject.custom_storages.StaticStorage'
+STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
+    # This is used by the `static` template tag from `static`, if you're using that. Or if anything else
+    # refers directly to STATIC_URL. So it's safest to always set it.
+# STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+
+    # Tell the staticfiles app to use S3Boto storage when writing the collected static files (when
+    # you run `collectstatic`).
+# STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
+# Internationalization
+# https://docs.djangoproject.com/en/1.8/topics/i18n/
+
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -129,21 +160,36 @@ USE_L10N = True
 
 USE_TZ = True
 
+MEDIAFILES_LOCATION = 'media'
+MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
+DEFAULT_FILE_STORAGE = 'myproject.custom_storages.MediaStorage'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_URL = '/media/'
+# MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.8/howto/static-files/
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+# DEFAULT_FILE_STORAGE = 'myproject.s3util.MediaRootS3BotoStorage'
+# STATICFILES_STORAGE = 'myproject.s3util.StaticRootS3BotoStorage'
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.9/howto/static-files/
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
-STATIC_URL = '/static/'
+# # Static files (CSS, JavaScript, Images)
+# # https://docs.djangoproject.com/en/1.8/howto/static-files/
+# # STATIC_URL = '/static/'
 
-# Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'myapp','static'),
-)
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_URL = '/media/'
+
+# # Static files (CSS, JavaScript, Images)
+# # https://docs.djangoproject.com/en/1.8/howto/static-files/
+# PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+
+# # Static files (CSS, JavaScript, Images)
+# # https://docs.djangoproject.com/en/1.9/howto/static-files/
+# STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+# STATIC_URL = '/static/'
+
+# # Extra places for collectstatic to find static files.
+# STATICFILES_DIRS = (
+#     os.path.join(PROJECT_ROOT, 'myapp','static'),
+# )
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

@@ -1,6 +1,7 @@
 {% extends "myapp/headernav.html" %}
 {% block style %}
-    <link href="/static/css/documentary.css" rel="stylesheet">
+{%load staticfiles%}
+    <link href="{% static 'css/documentary.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
@@ -50,7 +51,7 @@
             <div class="container">
                 <div class="nothing">
                 <h2>Nothing found :(</h2>
-                <img src="/../static/walle.png" alt="walle">
+                <img src="{% static 'walle.png'%}" alt="walle">
                     
                 </div>
             </div>

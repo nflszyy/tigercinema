@@ -1,13 +1,15 @@
 {% extends "myapp/headernav.html" %}
 {% block style %}
-    <link href="/static/css/uploadform.css" rel="stylesheet">
+{% load static from staticfiles %}
+    <link href="{% static 'css/uploadform.css'%}" rel="stylesheet">
+}
 {% endblock %}
 
 {% block content %}
         <div class="fullpage">
             <div class="container">
             <div class="walle">
-                <img src="/../static/walle2.png" alt="walle">
+                <img src="{% static 'walle2.png' %}" alt="walle">
             </div>
                     <!-- Upload form. Note enctype attribute! -->
                 <div class="upload-form">
