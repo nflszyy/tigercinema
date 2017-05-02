@@ -1,14 +1,14 @@
+.allinfo {
+	background-color: #EFEFEE;
+	height: 800px;
+}
+
 .video-container {
 	width: 640px;
 	height: 365px;
 	position: relative;
 	margin: 0 auto;
-	top: 0px;
-	left: 0px;
-}
+	top: 60px;
+	border: 0px solid black;
 
-.allinfo {
-	text-align: left;
-  background-size: cover;
-  height: 800px;
 }

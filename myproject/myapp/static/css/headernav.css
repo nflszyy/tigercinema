@@ -1,7 +1,6 @@
 
 .nav a{
 	color: #FFF;
-	text-shadow: 2px 2px 5px #aaa;
 	font-size: 20px;
 	font-family: 'Roboto Condensed', sans-serif; 
   font-weight: 300;
@@ -12,10 +11,15 @@
 }
 #left-bar a{
   font-size: 22px;
+  text-shadow: 2px 2px 5px #aaa;
 }
 .nav a:hover{
-	color: #FFF;
+	color: #DCDCDC;
 	text-decoration: none;
+}
+
+#left-bar a:hover{
+  color: #FFF;
 }
 
 
