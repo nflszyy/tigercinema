@@ -3,7 +3,7 @@
 {% block style %}
 {% load ratings %}
 {%load staticfiles%}
-  <link href="/static/css/play.css" rel="stylesheet">
+  <link href="{% static 'css/play.css' %}" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
   <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
   <style type = "text/css">
@@ -24,27 +24,39 @@ video::-webkit-media-controls-panel {
 {% endblock %}
 
 {% block content %}
-<div class="allinfo">
+<div class="fullpage">
 	{% if video %}
 		{% for v in video %}
-			<div class="video-container">
+        <ul class="video-and-videos">
+        <li>
+			    <div class="video-container">
 					<video id="video" width="640" height="365" controls>
                         <source src="{{ v.docfile.url }}" type="{{ v.content_type }}" controls>
                         <p>Your browser does not support the video tag.</p>
                     </video>
-			</div>
-            <div class="document-title">
-            <
-                <p> Title: {{v.title}} </p>
-            </div>
-            <div class="document-author">
-                <p> Filmmaker: {{v.fname}} {{v.lname}} </p>
-            </div>
-            <div class="document-description">
-                <p> Description: {{v.description}} </p>
-            </div>
-                    {% ratings v %}
+                </div>
+                <div class="info-container">
+                    <div class="document-title">
+                        <h2> {{v.title}} </h2>
+                    </div>
+                    <div class="document-author">
+                        <h3> {{v.fname}} {{v.lname}} </h3>
+                    </div>
+                    <div class="document-description">
+                        <p> Filmmaker's Note: {{v.description}} </p>
+                    </div>
+                    
+                </div>
+        </li>
+        <li>
+            <ul class="ratings">
+                        <li><p> Rate this movie here: </p></li>
+                        <li>{% ratings v icon_height=15 icon_width=15 %}</li>
+                    </ul>
+            <div class="video-recommender">
 
+            </div>
+        </li>
             <div>
                 <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
                 <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
