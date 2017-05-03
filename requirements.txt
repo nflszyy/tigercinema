@@ -1,10 +1,14 @@
+boto==2.46.1
 click==6.7
 decorator==4.0.11
 dj-database-url==0.4.2
 Django==1.11
 django-braces==1.11.0
+django-cas-ng==3.5.7
 django-model-utils==3.0.0
+django-s3direct==0.4.9
 django-star-ratings==0.5.5
+django-storages==1.5.2
 filemagic==1.6
 Flask==0.12.1
 gunicorn==19.7.1
@@ -17,7 +21,10 @@ numpy==1.12.1
 olefile==0.44
 Pillow==4.1.0
 psycopg2==2.7.1
+python-cas==1.2.0
 pytz==2017.2
+requests==2.13.0
+six==1.10.0
 tqdm==4.11.2
 virtualenv==15.1.0
 Werkzeug==0.12.1
