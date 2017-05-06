@@ -64,7 +64,7 @@ def uploadform(request):
             newdoc.save()
 
             path = os.path.join(settings.BASE_DIR, 'myproject', 'myapp', 'static', 'thumbnails')  
-            clip = VideoFileClip(os.path.join(settings.MEDIA_ROOT, newdoc.docfile.name))
+            clip = VideoFileClip(settings.MEDIA_URL)
             thumb_path = os.path.join(path, thumb)
             clip.save_frame(thumb_path, t=120)
 
