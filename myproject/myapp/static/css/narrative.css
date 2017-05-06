@@ -7,9 +7,9 @@
 /* Main */
 .narratives {
   text-align: center;
-  background: background-color: #EFEFEE;
-  height: 800px;
-}
+  background-color: #EFEFEE;
+/*  height: 800px;
+*/}
 
 .narratives .container {
   position: relative;
@@ -65,10 +65,10 @@
 
 .movie-container {
 
-	/*background-color: #FFF;
-	border: 1px solid #CCC;*/
-	width:265px;
-	height: 220px;
+	background-color: #FFF;
+	border: 1px solid #CCC;
+	width:290px;
+	height: 230px;
 	margin:5px;
 	padding: 12px;	
 }

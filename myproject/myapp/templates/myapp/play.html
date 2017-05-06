@@ -3,10 +3,12 @@
 {% block style %}
 {% load ratings %}
 {%load staticfiles%}
-  <link href="{% static 'css/play.css' %}" rel="stylesheet">
-  <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
-  <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
-  <style type = "text/css">
+<!--   <link href="{% static 'css/play.css' %}" rel="stylesheet">
+ -->  
+    <link href="{% static 'css/play.css'%}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+    <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
+    <style type = "text/css">
 
     video::-internal-media-controls-download-button {
     display:none;
@@ -27,10 +29,10 @@ video::-webkit-media-controls-panel {
 <div class="fullpage">
 	{% if video %}
 		{% for v in video %}
-        <ul class="video-and-videos">
+        <ul class = "video-and-recommends">
         <li>
 			    <div class="video-container">
-					<video id="video" width="640" height="365" controls>
+					<video poster="{% static 'thumbnails/'%}{{document.thumbnail}}" id="video" width="840" height="500" controls>
                         <source src="{{ v.docfile.url }}" type="{{ v.content_type }}" controls>
                         <p>Your browser does not support the video tag.</p>
                     </video>
@@ -40,23 +42,41 @@ video::-webkit-media-controls-panel {
                         <h2> {{v.title}} </h2>
                     </div>
                     <div class="document-author">
+                        <img src="/static/person.png" alt="author" style="width: 23px; height:23px; float:left">
                         <h3> {{v.fname}} {{v.lname}} </h3>
                     </div>
-                    <div class="document-description">
-                        <p> Filmmaker's Note: {{v.description}} </p>
+                    <div class="ratings">
+                        <img src="/static/like.png" alt="like" style="width: 26px; height:26px; float:left">
+                        <p> Rate this movie here: </p>
+                        {% ratings v icon_height=20 icon_width=20 %}
                     </div>
-                    
+                    <div class="document-description">
+                        <img src="/static/notebook.png" alt="author" style="width: 35px; height:35px; float:left">
+                        <p> About this Movie: {{v.description}} </p>
+                    </div>
                 </div>
         </li>
         <li>
-            <ul class="ratings">
-                        <li><p> Rate this movie here: </p></li>
-                        <li>{% ratings v icon_height=15 icon_width=15 %}</li>
-                    </ul>
-            <div class="video-recommender">
-
-            </div>
+        <div class="recommender">
+            <p>Recommended</p>
+            <p>Top Movies</p>
+                <ul class="top-movies">
+                {% for document in rateddocuments %}
+                    <li>
+                        <div class="movie-container">
+                            <a href="../{{document.id}}">
+                            <img src="{% static 'thumbnails/'%}{{document.thumbnail}}" alt="{{document.title}}" style="width:120px; height:120px">
+                            </a>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
         </li>
+        
+        </ul>        
+
+
             <div>
                 <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
                 <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>

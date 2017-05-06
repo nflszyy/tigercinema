@@ -143,6 +143,8 @@ def play(request, user_id):
     documents = Document.objects.all()
     paginator = Paginator(documents, 1) # Show 1 video per page
     page = int(user_id) - documents[0].id + 1
+    rateddocuments = Document.objects.filter(ratings__isnull=False).order_by('ratings__average')[0:8]
+
     try:
         video = paginator.page(page)
     except PageNotAnInteger:
@@ -152,7 +154,8 @@ def play(request, user_id):
         # If page is out of range (e.g. 9999), deliver last page of results.
         video= paginator.page(paginator.num_pages)
 
-    return render(request, 'myapp/play.html', {'video': video})
+
+    return render(request, 'myapp/play.html', {'video': video, 'rateddocuments':rateddocuments})
 
 
 

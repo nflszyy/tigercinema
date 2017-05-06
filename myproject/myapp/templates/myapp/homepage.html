@@ -29,7 +29,7 @@
                             <img src="{% static 'thumbnails/'%}{{document.thumbnail}}" alt="{{document.title}}" style="width:260px; height:160px;">
                             </a>
                             <div class="document-title">
-                                <p> {{document.title}} </p>
+                                <p> {{document.title|stringformat:'.30s'}} </p>
                             </div>
 <!--                             <div class="document-author">
                                 <p> {{document.fname}} {{document.lname}} </p>
@@ -75,7 +75,7 @@
                             <img src="{% static 'thumbnails/'%}{{document.thumbnail}}" alt="{{document.title}}" style="width:260px; height:160px;">
                             </a>
                             <div class="document-title">
-                                <p> {{document.title}} </p>
+                                <p> {{document.title|stringformat:'.30s'}} </p>
                             </div>
 <!--                             <div class="document-author">
                                 <p> {{document.fname}} {{document.lname}} </p>
