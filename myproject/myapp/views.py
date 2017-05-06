@@ -56,10 +56,11 @@ def uploadform(request):
             descript = form.cleaned_data['description']
             titlename = form.cleaned_data['title']
             choiceval = form.cleaned_data['choice']
+            url = form.cleaned_data['docfile']
             thumb = lastname+str(movie_count)+'.jpg'
             newdoc = Document(fname = firstname, lname = lastname, title = titlename, 
                               thumbnail = thumb, description = descript, 
-                              choice = choiceval, docfile=request.FILES['docfile'])              
+                              choice = choiceval, docfile=url)              
             newdoc.save()
 
             path = os.path.join(settings.BASE_DIR, 'myproject', 'myapp', 'static', 'thumbnails')  

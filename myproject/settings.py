@@ -45,7 +45,6 @@ INSTALLED_APPS = (
     'django_cas_ng',
     'star_ratings',
     's3direct',
-    'cat',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -114,6 +113,15 @@ DATABASES = {
 }
 
 
+S3DIRECT_DESTINATIONS = {
+    # Allow anybody to upload any MIME type
+    'videos': {
+        'key': '/',
+        'allowed': ['video/mp4','video/quicktime']
+    },
+}
+
+
 
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
@@ -127,21 +135,16 @@ AWS_HEADERS = {  # see http://developer.yahoo.com/performance/rules.html#expires
         'Cache-Control': 'max-age=94608000',
     }
 
-AWS_STORAGE_BUCKET_NAME = 'tigercinema'
-AWS_ACCESS_KEY_ID = 'AKIAJGCD2PJO7ZXDNA3Q'
-AWS_SECRET_ACCESS_KEY = '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'
-
+AWS_ACCESS_KEY_ID = 'AKIAJRO56I6N42GTRMFQ'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'princetonuniversityfilmsharing'
+S3DIRECT_REGION = 'us-east-2'
     # Tell django-storages that when coming up with the URL for an item in S3 storage, keep
     # it simple - just use this domain plus the path. (If this isn't set, things get complicated).
     # This controls how the `static` template tag from `staticfiles` gets expanded, if you're using it.
     # We also use it in the next setting.
 
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-
-STATICFILES_LOCATION = 'static'
-STATICFILES_STORAGE = 'myproject.custom_storages.StaticStorage'
-STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
-    # This is used by the `static` template tag from `static`, if you're using that. Or if anything else
+  # This is used by the `static` template tag from `static`, if you're using that. Or if anything else
     # refers directly to STATIC_URL. So it's safest to always set it.
 # STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
 
@@ -162,9 +165,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-MEDIAFILES_LOCATION = 'media'
-MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
-DEFAULT_FILE_STORAGE = 'myproject.custom_storages.MediaStorage'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # MEDIA_URL = '/media/'
@@ -183,15 +184,19 @@ DEFAULT_FILE_STORAGE = 'myproject.custom_storages.MediaStorage'
 
 # # Static files (CSS, JavaScript, Images)
 # # https://docs.djangoproject.com/en/1.8/howto/static-files/
-# PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 # # Static files (CSS, JavaScript, Images)
 # # https://docs.djangoproject.com/en/1.9/howto/static-files/
-# STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
-# STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+STATIC_URL = '/static/'
 
 # # Extra places for collectstatic to find static files.
-# STATICFILES_DIRS = (
-#     os.path.join(PROJECT_ROOT, 'myapp','static'),
-# )
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_DIRS = (
+   os.path.join(PROJECT_ROOT, 'myapp','static'),
+)
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+MEDIAFILES_LOCATION = 'media'
+MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
+DEFAULT_FILE_STORAGE = 'myproject.custom_storages.MediaStorage'
