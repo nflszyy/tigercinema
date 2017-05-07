@@ -26,7 +26,6 @@
                         <li>
 
                         <div class="movie-container">
-                            <div class="effect-container">
                             <a href="../play/{{document.id}}">
                                 <img src="{% static 'thumbnails/'%}{{document.thumbnail}}" alt="{{document.title}}" style="width:260px; height:160px;">
                                 <!-- <div class="effect">
@@ -39,7 +38,6 @@
                                     </div>
                                 </div> -->
                             </a>
-                            </div>
                             
                             <div class="document-title">
                                 <p> {{document.title|stringformat:'.30s'}} </p>
