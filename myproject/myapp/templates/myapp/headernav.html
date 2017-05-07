@@ -56,23 +56,20 @@
                     <li id="left-bar"><a href={% url 'homepage'%}>TigerCinema</a></li>
                     </div>
                 </ul>
-                <ul class="pull-right">
-                    <li><a href={%url 'homepage'%}>All Movies</a></li>
-                    <li><a href={%url 'documentary'%}>Documentaries</a></li>
-                    <li><a href={%url 'narrative'%}>Narratives</a></li>
-                    <li><a href={%url 'uploadform'%}>Upload Your Work</a></li>
-                    <li>
-                    <!-- <a href={%url 'cas_ng_logout'%}>{{netid}}</a> -->
+                <div class="pull-right">
+                    <a href={%url 'homepage'%}>All Movies</a>
+                    <a href={%url 'documentary'%}>Documentaries</a>
+                    <a href={%url 'narrative'%}>Narratives</a>
+                    <a href={%url 'uploadform'%}>Upload Your Work</a>
                         <div class="dropdown">
-                          <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+                          <button onclick="myFunction()" class="dropbtn">{{netid}}</button>
                           <div id="myDropdown" class="dropdown-content">
                             <a href={%url 'cas_ng_logout'%}>Logout</a>
                             <a href="#">{{netid}}</a>
                           </div>
                         </div>
 
-                    </li>
-                </ul>
+                </div>
             </div>
         </div>
         

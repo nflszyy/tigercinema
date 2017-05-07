@@ -49,6 +49,23 @@
   font-weight: 400;
 }
 
+.pull-right {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.pull-right a {
+  float: right;
+  text-align: center;
+  padding: 14px 16px;
+    text-decoration: none;
+}
+
+.dropdown {
+  float: right;
+  overflow: hidden;
+}
+
 .dropdown .dropbtn {
   cursor: pointer;
   color: #FFF;
