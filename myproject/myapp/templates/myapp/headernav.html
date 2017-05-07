@@ -12,8 +12,6 @@
         <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type = "text/css"/>
         <meta name="viewport" content = "width=device-width, initial-scale=1.0">
 
-
-
     <!-- Bootstrap Core CSS -->
    
 
@@ -29,24 +27,6 @@
     </head>
     <div id="entire-page">
     <body>
-        <!-- Javascript for dropdown menu -->
-        <script type="text/javascript">
-            /* When the user clicks on the button, 
-            toggle between hiding and showing the dropdown content */
-            function myFunction() {
-                document.getElementById("myDropdown").classList.toggle("show");
-            }
-
-            // Close the dropdown if the user clicks outside of it
-            window.onclick = function(e) {
-              if (!e.target.matches('.dropbtn')) {
-                var myDropdown = document.getElementById("myDropdown");
-                  if (myDropdown.classList.contains('show')) {
-                    myDropdown.classList.remove('show');
-                  }
-              }
-            }
-        </script>
         
         <div class="nav">
             <div class="nav-container">
@@ -56,20 +36,13 @@
                     <li id="left-bar"><a href={% url 'homepage'%}>TigerCinema</a></li>
                     </div>
                 </ul>
-                <div class="pull-right">
-                    <a href={%url 'homepage'%}>All Movies</a>
-                    <a href={%url 'documentary'%}>Documentaries</a>
-                    <a href={%url 'narrative'%}>Narratives</a>
-                    <a href={%url 'uploadform'%}>Upload Your Work</a>
-                        <div class="dropdown">
-                          <button onclick="myFunction()" class="dropbtn">{{netid}}</button>
-                          <div id="myDropdown" class="dropdown-content">
-                            <a href={%url 'cas_ng_logout'%}>Logout</a>
-                            <a href="#">{{netid}}</a>
-                          </div>
-                        </div>
-
-                </div>
+                <ul class="pull-right">
+                    <li><a href={%url 'homepage'%}>All Movies</a></li>
+                    <li><a href={%url 'documentary'%}>Documentaries</a></li>
+                    <li><a href={%url 'narrative'%}>Narratives</a></li>
+                    <li><a href={%url 'uploadform'%}>Upload Your Work</a></li>
+                    <li><a href={%url 'cas_ng_logout'%}>{{netid}}</a></li>
+                </ul>
             </div>
         </div>
         
