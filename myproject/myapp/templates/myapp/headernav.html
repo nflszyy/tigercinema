@@ -12,29 +12,7 @@
         <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type = "text/css"/>
         <meta name="viewport" content = "width=device-width, initial-scale=1.0">
 
-    <!-- Javascript for dropdown menu -->
-    <script type="text/javascript">
-        /* When the user clicks on the button, 
-        toggle between hiding and showing the dropdown content */
-        function myFunction() {
-            document.getElementById("myDropdown").classList.toggle("show");
-        }
 
-        // Close the dropdown menu if the user clicks outside of it
-        window.onclick = function(event) {
-          if (!event.target.matches('.dropbtn')) {
-
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-            var i;
-            for (i = 0; i < dropdowns.length; i++) {
-              var openDropdown = dropdowns[i];
-              if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
-              }
-            }
-          }
-        }
-    </script>
 
     <!-- Bootstrap Core CSS -->
    
@@ -51,6 +29,24 @@
     </head>
     <div id="entire-page">
     <body>
+        <!-- Javascript for dropdown menu -->
+        <script type="text/javascript">
+            /* When the user clicks on the button, 
+            toggle between hiding and showing the dropdown content */
+            function myFunction() {
+                document.getElementById("myDropdown").classList.toggle("show");
+            }
+
+            // Close the dropdown if the user clicks outside of it
+            window.onclick = function(e) {
+              if (!e.target.matches('.dropbtn')) {
+                var myDropdown = document.getElementById("myDropdown");
+                  if (myDropdown.classList.contains('show')) {
+                    myDropdown.classList.remove('show');
+                  }
+              }
+            }
+        </script>
         
         <div class="nav">
             <div class="nav-container">
