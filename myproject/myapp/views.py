@@ -51,6 +51,7 @@ def uploadform(request):
 
         form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():
+            user=request.user
             movie_count+=1
             firstname = form.cleaned_data['fname']
             lastname = form.cleaned_data['lname']
@@ -58,9 +59,10 @@ def uploadform(request):
             titlename = form.cleaned_data['title']
             choiceval = form.cleaned_data['choice']
             thumb = lastname+str(movie_count)+'.jpg'
+            punetid = user.username
             newdoc = Document(fname = firstname, lname = lastname, title = titlename, 
                               thumbnail = thumb, description = descript, 
-                              choice = choiceval, docfile=request.FILES['docfile'])              
+                              choice = choiceval, netid = punetid, docfile=request.FILES['docfile'])              
             newdoc.save()
 
             path = os.path.join(settings.BASE_DIR, 'myproject', 'myapp', 'static', 'thumbnails')  
