@@ -62,7 +62,6 @@ def uploadform(request):
                               thumbnail = thumb, description = descript, 
                               choice = choiceval, docfile=url)              
             newdoc.save()
-
             path = os.path.join(settings.BASE_DIR, 'myproject', 'myapp', 'static', 'thumbnails')  
             clip = VideoFileClip(url)
             thumb_path = os.path.join(path, thumb)
