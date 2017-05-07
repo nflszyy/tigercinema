@@ -57,6 +57,7 @@ def uploadform(request):
             titlename = form.cleaned_data['title']
             choiceval = form.cleaned_data['choice']
             url = form.cleaned_data['docfile']
+            print (url)
             thumb = lastname+str(movie_count)+'.jpg'
             newdoc = Document(fname = firstname, lname = lastname, title = titlename, 
                               thumbnail = thumb, description = descript, 
@@ -64,7 +65,7 @@ def uploadform(request):
             newdoc.save()
 
             path = os.path.join(settings.BASE_DIR, 'myproject', 'myapp', 'static', 'thumbnails')  
-            clip = VideoFileClip(settings.MEDIA_URL)
+            clip = VideoFileClip(url)
             thumb_path = os.path.join(path, thumb)
             clip.save_frame(thumb_path, t=120)
 

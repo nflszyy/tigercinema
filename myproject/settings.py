@@ -165,7 +165,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_CUSTOM_DOMAIN = "s3.%s.amazonaws.comus-east-2.amazonaws.com/%s" % (S3DIRECT_REGION, AWS_STORAGE_BUCKET_NAME)
 
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # MEDIA_URL = '/media/'
@@ -197,6 +197,6 @@ STATICFILES_DIRS = (
 )
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-MEDIAFILES_LOCATION = 'media'
-MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
+# MEDIAFILES_LOCATION = 'media'
+MEDIA_URL = "https://%s/" % (AWS_S3_CUSTOM_DOMAIN)
 DEFAULT_FILE_STORAGE = 'myproject.custom_storages.MediaStorage'
