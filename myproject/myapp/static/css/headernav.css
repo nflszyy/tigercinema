@@ -49,10 +49,10 @@
   font-weight: 400;
 }
 
-.pull-right {
+/*.pull-right {
   overflow: hidden;
   background-color: #333;
-}
+}*/
 
 .pull-right a {
   float: right;
@@ -71,6 +71,7 @@
   color: #FFF;
   font-size: 20px;
   font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 300;
   text-transform: uppercase;
   border: none;
   outline: none;
