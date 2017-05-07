@@ -1,0 +1,59 @@
+{% extends "myapp/headernav.html" %}
+{% block style %}
+{%load staticfiles%}
+    <link href="{% static 'css/documentary.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+        <!-- Search button -->
+        <div id="wrap">
+          <form action="{%url 'search' %}" method ="get" accept-charset="utf-8" autocomplete="off">
+          <input id="search" name="search" type="text" placeholder="Search..."><input id="search_submit" value="Search" type="submit">
+          </form>
+        </div>
+<!--         <div class="header-image">
+        <img src='../static/navbar.png'>
+        </div> -->
+        <!-- List of uploaded documents -->
+ 
+            {%load staticfiles%}
+            {% if documents %}
+            <div class="documentaries">
+            <div class="container">
+                <ul class="document-list">
+                <h2>My movies</h2>
+                    {% for document in documents %}
+                        <li>
+                        <div class="movie-container">
+                            <a href="../play/{{document.id}}">
+                            <img src="{% static 'thumbnails/'%}{{document.thumbnail}}" alt="{{document.title}}" style="width:260px; height:160px">
+                            </a>
+                            <div class="document-title">
+                                <p> {{document.title|stringformat:'.30s'}} </p>
+                            </div>
+                            
+                            <!-- delete button -->
+                            <form action="{% url 'delete' %}" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <input type="hidden" name="docfile" value="{{ document.pk }}" />
+                            <input type="submit" value="Delete" />
+                            </form>
+                        </div>
+                        </li>                
+                    {% endfor %}
+                </ul>
+                </div>
+                </div>
+            {% else %}
+            <div class="container">
+                <div class="nothing">
+                <h2>Nothing found :(</h2>
+                <img src="{% static 'walle.png'%}" alt="walle">
+                    
+                </div>
+            </div>
+            {% endif %}
+
+
+    </body>
+{% endblock %}
