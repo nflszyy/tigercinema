@@ -120,7 +120,7 @@
 	padding: 12px;	
 }
 
-.allmovies .movie-container img {
+.movie-container img {
 	opacity: 0.8;
 	border: 1px solid #eee;
 
@@ -132,7 +132,7 @@
 
 }
 
-.allmovies .movie-container img:hover {
+.movie-container img:hover {
 	opacity:1;
   -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(.8, transparent), to(rgba(0,0,0,0.25)));
  
