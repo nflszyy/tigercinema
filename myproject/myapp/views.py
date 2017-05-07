@@ -18,6 +18,7 @@ import functools
 import operator
 from django.contrib.contenttypes.fields import GenericRelation
 from star_ratings.models import Rating
+from urllib.request import urlopen
 
 movie_count=1
 
@@ -62,7 +63,7 @@ def uploadform(request):
                               thumbnail = thumb, description = descript, 
                               choice = choiceval, docfile=url)              
             newdoc.save()
-            path = os.path.join(settings.BASE_DIR, 'myproject', 'myapp', 'static', 'thumbnails')  
+            path = os.path.join(settings.BASE_DIR, 'myproject', 'myapp', 'static', 'thumbnails') 
             clip = VideoFileClip(url)
             thumb_path = os.path.join(path, thumb)
             clip.save_frame(thumb_path, t=120)
@@ -113,7 +114,7 @@ def delete(request):
         raise Http404
     docId = request.POST.get('docfile', None)
     docToDel = get_object_or_404(Document, pk = docId)
-    docToDel.docfile.delete()
+    #docToDel.docfile.delete()
     docToDel.delete()
     return HttpResponseRedirect('/myapp/homepage/')
 
