@@ -38,7 +38,9 @@ def homepage(request):
 
 @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def feedback(request):
-    return render(request,'myapp/feedback.html')
+    user=request.user
+    netid=user.username
+    return render(request,'myapp/feedback.html',{'netid':netid})
 
 
 def welcome(request):
@@ -46,6 +48,8 @@ def welcome(request):
 
 @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def uploadform(request):
+    user=request.user
+    netid=user.username
     global movie_count
     if request.method == 'POST':
 
@@ -81,31 +85,35 @@ def uploadform(request):
 
     return render(
         request, 'myapp/uploadform.html',
-        { 'form':form}
+        { 'form':form, 'netid':netid}
         )
 
 @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def documentary(request):
  # Load documents for the list page
     documents = Document.objects.filter(choice__exact='2')
+    user=request.user
+    netid=user.username
 
     # Render list page with the documents and the form
     return render(
         request,
         'myapp/documentary.html',
-        {'documents': documents}
+        {'documents': documents,'netid':netid}
     )
 
 @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def narrative(request):
  # Load documents for the list page
     documents = Document.objects.filter(choice__exact='1')
+    user=request.user
+    netid=user.username
 
     # Render list page with the documents and the form
     return render(
         request,
         'myapp/narrative.html',
-        {'documents': documents}
+        {'documents': documents,'netid':netid}
     )
 
 
@@ -122,7 +130,10 @@ def delete(request):
 
 @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def search(request):
+
     if request.method == 'GET':
+        user=request.user
+        netid=user.username
         query = request.GET.get('search', None)
         if query:
             query_list = query.split()
@@ -137,13 +148,15 @@ def search(request):
             return render(
                     request,
                     'myapp/searchlistings.html',
-                    {'documents': documents}
+                    {'documents': documents,'netid':netid}
             )
         else: return HttpResponseRedirect('/myapp/homepage/')
 
 @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def play(request, user_id):
     documents = Document.objects.all()
+    user=request.user
+    netid=user.username
     paginator = Paginator(documents, 1) # Show 1 video per page
     page = int(user_id) - documents[0].id + 1
     rateddocuments = Document.objects.filter(ratings__isnull=False).order_by('ratings__average')[0:8]
@@ -158,7 +171,7 @@ def play(request, user_id):
         video= paginator.page(paginator.num_pages)
 
 
-    return render(request, 'myapp/play.html', {'video': video, 'rateddocuments':rateddocuments})
+    return render(request, 'myapp/play.html', {'video': video, 'rateddocuments':rateddocuments, 'netid':netid})
 
 
 
