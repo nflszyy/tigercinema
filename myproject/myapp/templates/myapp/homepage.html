@@ -28,12 +28,23 @@
                 <ul class="document-list">
                     {% for document in rateddocuments %}
                         <li>
+
                         <div class="movie-container">
                             <a href="../play/{{document.id}}">
-                            <img src="{% static 'thumbnails/'%}{{document.thumbnail}}" alt="{{document.title}}" style="width:260px; height:160px;">
+                                <img src="{% static 'thumbnails/'%}{{document.thumbnail}}" alt="{{document.title}}" style="width:260px; height:160px;">
+                                <!-- <div class="effect">
+                                    <div class="caption">
+                                        <div class="blur"></div>
+                                        <div class="caption-text">
+                                            <h1>Amazing Caption</h1>
+                                            <p>Whatever It Is - Always Awesome</p>
+                                        </div>
+                                    </div>
+                                </div> -->
                             </a>
+                            
                             <div class="document-title">
-                                <p> {{document.title}} </p>
+                                <p> {{document.title|stringformat:'.30s'}} </p>
                             </div>
 <!--                             <div class="document-author">
                                 <p> {{document.fname}} {{document.lname}} </p>
@@ -79,7 +90,7 @@
                             <img src="{% static 'thumbnails/'%}{{document.thumbnail}}" alt="{{document.title}}" style="width:260px; height:160px;">
                             </a>
                             <div class="document-title">
-                                <p> {{document.title}} </p>
+                                <p> {{document.title|stringformat:'.30s'}} </p>
                             </div>
 <!--                             <div class="document-author">
                                 <p> {{document.fname}} {{document.lname}} </p>

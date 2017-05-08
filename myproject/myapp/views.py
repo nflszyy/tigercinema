@@ -22,9 +22,10 @@ from urllib.request import urlopen
 
 movie_count=1
 
-# @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
+#@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def homepage(request):
-
+    user=request.user
+    netid=user.username
     # Load documents for the list page
     documents = Document.objects.all()
     rateddocuments = Document.objects.filter(ratings__isnull=False).order_by('ratings__average')[0:5]
@@ -33,24 +34,29 @@ def homepage(request):
     return render(
         request,
         'myapp/homepage.html',
-        {'documents': documents, 'rateddocuments': rateddocuments}
+        {'documents': documents, 'rateddocuments': rateddocuments, 'netid':netid}
     )
 
-# @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
+#@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def feedback(request):
-    return render(request,'myapp/feedback.html')
+    user=request.user
+    netid=user.username
+    return render(request,'myapp/feedback.html',{'netid':netid})
 
 
 def welcome(request):
     return render(request, 'myapp/welcome.html')
 
-# @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
+#@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def uploadform(request):
+    user=request.user
+    netid=user.username
     global movie_count
     if request.method == 'POST':
 
         form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():
+            user=request.user
             movie_count+=1
             firstname = form.cleaned_data['fname']
             lastname = form.cleaned_data['lname']
@@ -59,9 +65,10 @@ def uploadform(request):
             choiceval = form.cleaned_data['choice']
             url = form.cleaned_data['docfile']
             thumb = lastname+str(movie_count)+'.jpg'
+            punetid = user.username
             newdoc = Document(fname = firstname, lname = lastname, title = titlename, 
                               thumbnail = thumb, description = descript, 
-                              choice = choiceval, docfile=url)              
+                              choice = choiceval, docfile=url, netid = punetid)              
             newdoc.save()
             path = os.path.join(settings.BASE_DIR, 'myproject', 'myapp', 'static', 'thumbnails') 
             clip = VideoFileClip(url)
@@ -79,36 +86,40 @@ def uploadform(request):
 
     return render(
         request, 'myapp/uploadform.html',
-        { 'form':form}
+        { 'form':form, 'netid':netid}
         )
 
-# @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
+#@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def documentary(request):
  # Load documents for the list page
     documents = Document.objects.filter(choice__exact='2')
+    user=request.user
+    netid=user.username
 
     # Render list page with the documents and the form
     return render(
         request,
         'myapp/documentary.html',
-        {'documents': documents}
+        {'documents': documents,'netid':netid}
     )
 
-# @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
+#@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def narrative(request):
  # Load documents for the list page
     documents = Document.objects.filter(choice__exact='1')
+    user=request.user
+    netid=user.username
 
     # Render list page with the documents and the form
     return render(
         request,
         'myapp/narrative.html',
-        {'documents': documents}
+        {'documents': documents,'netid':netid}
     )
 
 
 # http://stackoverflow.com/questions/20205137/how-to-delete-files-in-django
-# @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
+#@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def delete(request):
     if request.method != 'POST':
         raise Http404
@@ -118,9 +129,12 @@ def delete(request):
     docToDel.delete()
     return HttpResponseRedirect('/myapp/homepage/')
 
-# @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
+#@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def search(request):
+
     if request.method == 'GET':
+        user=request.user
+        netid=user.username
         query = request.GET.get('search', None)
         if query:
             query_list = query.split()
@@ -135,15 +149,19 @@ def search(request):
             return render(
                     request,
                     'myapp/searchlistings.html',
-                    {'documents': documents}
+                    {'documents': documents,'netid':netid}
             )
         else: return HttpResponseRedirect('/myapp/homepage/')
 
-# @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
+#@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def play(request, user_id):
     documents = Document.objects.all()
+    user=request.user
+    netid=user.username
     paginator = Paginator(documents, 1) # Show 1 video per page
     page = int(user_id) - documents[0].id + 1
+    rateddocuments = Document.objects.filter(ratings__isnull=False).order_by('ratings__average')[0:8]
+
     try:
         video = paginator.page(page)
     except PageNotAnInteger:
@@ -153,10 +171,16 @@ def play(request, user_id):
         # If page is out of range (e.g. 9999), deliver last page of results.
         video= paginator.page(paginator.num_pages)
 
-    return render(request, 'myapp/play.html', {'video': video})
+
+    return render(request, 'myapp/play.html', {'video': video, 'rateddocuments':rateddocuments, 'netid':netid})
 
 
-
+#@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
+def mymovies(request):
+    user=request.user
+    netid=user.username
+    documents = Document.objects.filter(netid=netid)
+    return render(request, 'myapp/mymovies.html', {'documents': documents,'netid':netid})
 
 
 

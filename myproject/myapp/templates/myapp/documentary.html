@@ -11,7 +11,7 @@
     <!-- Search button -->
         <div id="wrap">
           <form action="{%url 'search' %}" method ="get" accept-charset="utf-8" autocomplete="off">
-          <input id="search" name="search" type="text" placeholder="Search..."><input id="search_submit" value="Rechercher" type="submit">
+          <input id="search" name="search" type="text" placeholder="Search..."><input id="search_submit" value="Search" type="submit">
           </form>
         </div>
 <!--         <div class="header-image">
@@ -32,10 +32,7 @@
                             <img src="{% static 'thumbnails/'%}{{document.thumbnail}}" alt="{{document.title}}" style="width:260px; height:160px;">
                             </a>
                             <div class="document-title">
-                                <p> {{document.title}} </p>
-                            </div>
-                            <div class="document-author">
-                                <p> {{document.fname}} {{document.lname}} </p>
+                                <p> {{document.title|stringformat:'.30s'}} </p>
                             </div>
                             
                             <!-- delete button -->

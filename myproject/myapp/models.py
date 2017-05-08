@@ -11,6 +11,7 @@ class Document(models.Model):
     lname = models.CharField(max_length = 100)
     title = models.CharField(max_length = 100)
     thumbnail = models.CharField(max_length = 100)
+    netid = models.CharField(max_length = 100)
     description = models.TextField()
     GENDER_CHOICES = (
                       ('1', 'Narrative'),
