@@ -6,7 +6,11 @@
     <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
     <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
 {% endblock %}
-
+                   <script type="text/javascript">
+                        document.getElementById('video').addEventListener('loadedmetadata', function() {
+                                this.currentTime = 5;
+                                }, false);
+                   </script>
 {% block content %}
 <!--         <div class="header-image">
         <img src='../static/navbar.png'>
