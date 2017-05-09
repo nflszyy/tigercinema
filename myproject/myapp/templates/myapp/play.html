@@ -32,13 +32,9 @@ video::-webkit-media-controls-panel {
         <ul class = "video-and-recommends">
         <li>
 			    <div class="video-container">
-<<<<<<< HEAD
 					<video id="video" width="640" height="365" poster="placeholder.png" controls>
                         <source src="{{ v.docfile }}" type="{{ v.content_type }}" controls>
-=======
-					<video poster="{% static 'thumbnails/'%}{{document.thumbnail}}" id="video" width="840" height="500" controls>
-                        <source src="{{ v.docfile.url }}" type="{{ v.content_type }}" controls>
->>>>>>> b9ea49f2613688e9223bdcfea57f3cdfa4911cfb
+
                         <p>Your browser does not support the video tag.</p>
                     </video>
                 </div>
@@ -92,6 +88,7 @@ video::-webkit-media-controls-panel {
                         <img src="/static/notebook.png" alt="author" style="width: 35px; height:35px; float:left">
                         <p> About this Movie: {{v.description}} </p>
                     </div>
+                    <div class="end-padding"></div>
                 </div>
         </li>
         <li>

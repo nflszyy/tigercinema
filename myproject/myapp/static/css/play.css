@@ -87,6 +87,10 @@ p {
 	border: 2px double orange;
 }
 
+.end-padding {
+	height: 100px;
+	width:100%;
+}
 
 li {
 	display: inline-block;
