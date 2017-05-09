@@ -8,6 +8,9 @@
 	height: 25px;
 	overflow: hidden;
 }
+.delete {
+	z-index: 100;
+}
 /* Main */
 .documentaries {
   text-align: center;

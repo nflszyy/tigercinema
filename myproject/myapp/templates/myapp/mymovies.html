@@ -36,11 +36,13 @@
                                 {% ratings document icon_height=15 icon_width=15%}
                             </div> -->
                             <!-- delete button -->
+                            <div class="delete">
                             <form action="{% url 'delete' %}" method="post" enctype="multipart/form-data">
                             {% csrf_token %}
                             <input type="hidden" name="docfile" value="{{ document.pk }}" />
                             <input type="submit" value="Delete" />
                             </form>
+                            </div>
                         </div>
                         </li>                
                     {% endfor %}
