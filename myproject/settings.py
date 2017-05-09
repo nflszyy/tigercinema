@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'myproject.myapp',
     'django_cas_ng',
     'star_ratings',
+    's3direct',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -94,21 +95,30 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 DATABASES = {
     'default': {
         # Haochen's settings
-         # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-         # 'NAME': 'test1',
-         # 'USER': 'iamauser',
-         # 'PASSWORD': 'md5b616d86bca63a780a9f5561c0a40ca10',
-         # 'HOST': 'localhost',
-         # 'PORT': '5432',
+         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+         'NAME': 'test1',
+         'USER': 'iamauser',
+         'PASSWORD': 'md5b616d86bca63a780a9f5561c0a40ca10',
+         'HOST': 'localhost',
+         'PORT': '5432',
 
         # Yuyan's settings
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        # 'NAME': 'postgres',
+        # 'USER': 'postgres',
+        # 'PASSWORD': 'password',
+        # 'HOST': 'localhost',
+        # 'PORT': '5432',
 }
+}
+
+
+S3DIRECT_DESTINATIONS = {
+    # Allow anybody to upload any MIME type
+    'videos': {
+        'key': '/',
+        'allowed': ['video/mp4','video/quicktime']
+    },
 }
 
 
@@ -125,14 +135,16 @@ AWS_HEADERS = {  # see http://developer.yahoo.com/performance/rules.html#expires
         'Cache-Control': 'max-age=94608000',
     }
 
-AWS_STORAGE_BUCKET_NAME = 'tigercinema'
-AWS_ACCESS_KEY_ID = 'AKIAJGCD2PJO7ZXDNA3Q'
-AWS_SECRET_ACCESS_KEY = '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'
-
+AWS_ACCESS_KEY_ID = 'AKIAJRO56I6N42GTRMFQ'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'princetonuniversityfilmsharing'
+S3DIRECT_REGION = 'us-east-2'
     # Tell django-storages that when coming up with the URL for an item in S3 storage, keep
     # it simple - just use this domain plus the path. (If this isn't set, things get complicated).
     # This controls how the `static` template tag from `staticfiles` gets expanded, if you're using it.
     # We also use it in the next setting.
+
+  # This is used by the `static` template tag from `static`, if you're using that. Or if anything else
 
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
@@ -161,9 +173,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-MEDIAFILES_LOCATION = 'media'
-MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
-DEFAULT_FILE_STORAGE = 'myproject.custom_storages.MediaStorage'
+AWS_S3_CUSTOM_DOMAIN = "s3.%s.amazonaws.comus-east-2.amazonaws.com/%s" % (S3DIRECT_REGION, AWS_STORAGE_BUCKET_NAME)
 
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # MEDIA_URL = '/media/'
@@ -182,15 +192,19 @@ DEFAULT_FILE_STORAGE = 'myproject.custom_storages.MediaStorage'
 
 # # Static files (CSS, JavaScript, Images)
 # # https://docs.djangoproject.com/en/1.8/howto/static-files/
-# PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 # # Static files (CSS, JavaScript, Images)
 # # https://docs.djangoproject.com/en/1.9/howto/static-files/
-# STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
-# STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+STATIC_URL = '/static/'
 
 # # Extra places for collectstatic to find static files.
-# STATICFILES_DIRS = (
-#     os.path.join(PROJECT_ROOT, 'myapp','static'),
-# )
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_DIRS = (
+   os.path.join(PROJECT_ROOT, 'myapp','static'),
+)
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# MEDIAFILES_LOCATION = 'media'
+MEDIA_URL = "https://%s/" % (AWS_S3_CUSTOM_DOMAIN)
+DEFAULT_FILE_STORAGE = 'myproject.custom_storages.MediaStorage'
