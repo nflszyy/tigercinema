@@ -1,5 +1,6 @@
 {% extends "myapp/headernav.html" %}
 {% block style %}
+{% load ratings%}
 {%load staticfiles%}
     <link href="{% static 'css/documentary.css' %}" rel="stylesheet">
 {% endblock %}
@@ -26,12 +27,14 @@
                         <li>
                         <div class="movie-container">
                             <a href="../play/{{document.id}}">
-                            <img src="{% static 'thumbnails/'%}{{document.thumbnail}}" alt="{{document.title}}" style="width:260px; height:160px">
+                            <img src="{% static 'filmpic.jpg'%}" alt="{{document.title}}" style="width:260px; height:160px;">
                             </a>
                             <div class="document-title">
                                 <p> {{document.title|stringformat:'.30s'}} </p>
                             </div>
-                            
+                            <div class="ratings">
+                                {% ratings document icon_height=15 icon_width=15%}
+                            </div>
                             <!-- delete button -->
                             <form action="{% url 'delete' %}" method="post" enctype="multipart/form-data">
                             {% csrf_token %}
