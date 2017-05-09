@@ -12,5 +12,6 @@ class DocumentForm(forms.Form):
     title = forms.CharField(max_length = 100, label='Title of your movie')
     description = forms.CharField(widget = forms.Textarea, label="Short description of your work:")
     choice = forms.ChoiceField(choices=[("1", "Narrative"), ("2", "Documentary")], label="Choose a type")
+    thumbnail = forms.ImageField()
     docfile = forms.URLField(widget=S3DirectWidget(dest='videos'))
  #comment to test git

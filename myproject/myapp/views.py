@@ -64,18 +64,11 @@ def uploadform(request):
             titlename = form.cleaned_data['title']
             choiceval = form.cleaned_data['choice']
             url = form.cleaned_data['docfile']
-            thumb = lastname+str(movie_count)+'.jpg'
             punetid = user.username
             newdoc = Document(fname = firstname, lname = lastname, title = titlename, 
-                              thumbnail = thumb, description = descript, 
+                              thumbnail = reques.FILES['thumbnail'], description = descript, 
                               choice = choiceval, docfile=url, netid = punetid)              
             newdoc.save()
-            path = os.path.join(settings.BASE_DIR, 'myproject', 'myapp', 'static', 'thumbnails') 
-            clip = VideoFileClip(url)
-            thumb_path = os.path.join(path, thumb)
-            clip.save_frame(thumb_path, t=120)
-
-
             # Redirect to the document list after POST
             return HttpResponseRedirect('/myapp/homepage/')
     else:

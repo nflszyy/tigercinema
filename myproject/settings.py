@@ -207,4 +207,4 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # MEDIAFILES_LOCATION = 'media'
 MEDIA_URL = "https://%s/" % (AWS_S3_CUSTOM_DOMAIN)
-DEFAULT_FILE_STORAGE = 'myproject.custom_storages.MediaStorage'
+DEFAULT_FILE_STORAGE = os.path.join(BASE_DIR, 'myproject', 'myapp', 'static')
