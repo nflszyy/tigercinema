@@ -95,20 +95,20 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 DATABASES = {
     'default': {
         # Haochen's settings
-         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-         'NAME': 'test1',
-         'USER': 'iamauser',
-         'PASSWORD': 'md5b616d86bca63a780a9f5561c0a40ca10',
-         'HOST': 'localhost',
-         'PORT': '5432',
+         # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+         # 'NAME': 'test1',
+         # 'USER': 'iamauser',
+         # 'PASSWORD': 'md5b616d86bca63a780a9f5561c0a40ca10',
+         # 'HOST': 'localhost',
+         # 'PORT': '5432',
 
         # Yuyan's settings
-        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        # 'NAME': 'postgres',
-        # 'USER': 'postgres',
-        # 'PASSWORD': 'password',
-        # 'HOST': 'localhost',
-        # 'PORT': '5432',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',
+        'PORT': '5432',
 }
 }
 
