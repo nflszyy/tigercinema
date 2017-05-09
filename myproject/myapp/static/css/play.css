@@ -1,6 +1,6 @@
 .fullpage {
 	background-color: #EFEFEE;
-	height: 800px;
+	min-height: 800px;
 }
 
 .video-container {
