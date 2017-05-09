@@ -4,13 +4,16 @@ from .validators import validate_mime_type
 from django.contrib.contenttypes.fields import GenericRelation
 from star_ratings.models import Rating
 from s3direct.fields import S3DirectField
+from django.core.files.storage import FileSystemStorage
+from myproject.myapp.settings import BASE_DIR
 
+fs = FileSystemStorage(location = os.path.join(BASE_DIR, 'myproject', 'myapp', 'static', 'thumbnails'))
 
 class Document(models.Model):
     fname = models.CharField(max_length = 100)
     lname = models.CharField(max_length = 100)
     title = models.CharField(max_length = 100)
-    thumbnail = models.ImageField(upload_to='thumbnails')
+    thumbnail = models.ImageField(storage=fs)
     netid = models.CharField(max_length = 100)
     description = models.TextField()
     GENDER_CHOICES = (
