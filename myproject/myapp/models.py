@@ -5,6 +5,7 @@ from django.contrib.contenttypes.fields import GenericRelation
 from star_ratings.models import Rating
 from s3direct.fields import S3DirectField
 from django.core.files.storage import FileSystemStorage
+import os
 
 
 fs = FileSystemStorage(location = os.path.join(settings.BASE_DIR, 'myproject', 'myapp', 'static', 'thumbnails'))
