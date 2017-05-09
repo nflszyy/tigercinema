@@ -34,9 +34,9 @@
 
 .document-list li {
 	display: inline-block;
-
-    vertical-align: left;
-    /*list-style-position: inside;
+	float: left;
+    /*vertical-align: left;
+    list-style-position: inside;
     list-style-type: disc;
     margin-right: 1em;*/
     white-space: nowrap;
