@@ -109,6 +109,7 @@
 .ratings {
 	height: 25px;
 	overflow: hidden;
+	text-align: center;
 }
 
 .nothing img {

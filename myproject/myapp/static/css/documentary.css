@@ -5,6 +5,7 @@
   margin: 0 auto;
 }
 .ratings {
+	text-align: center;
 	height: 25px;
 	overflow: hidden;
 }

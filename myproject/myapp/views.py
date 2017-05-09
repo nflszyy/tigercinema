@@ -22,7 +22,7 @@ from urllib.request import urlopen
 
 movie_count=1
 
-@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
+# @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def homepage(request):
     user=request.user
     netid=user.username
@@ -37,7 +37,7 @@ def homepage(request):
         {'documents': documents, 'rateddocuments': rateddocuments, 'netid':netid}
     )
 
-@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
+# @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def feedback(request):
     user=request.user
     netid=user.username
@@ -47,7 +47,7 @@ def feedback(request):
 def welcome(request):
     return render(request, 'myapp/welcome.html')
 
-@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
+# @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def uploadform(request):
     user=request.user
     netid=user.username
@@ -82,7 +82,7 @@ def uploadform(request):
         { 'form':form, 'netid':netid}
         )
 
-@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
+# @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def documentary(request):
  # Load documents for the list page
     documents = Document.objects.filter(choice__exact='2')
@@ -96,7 +96,7 @@ def documentary(request):
         {'documents': documents,'netid':netid}
     )
 
-@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
+# @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def narrative(request):
  # Load documents for the list page
     documents = Document.objects.filter(choice__exact='1')
@@ -112,7 +112,7 @@ def narrative(request):
 
 
 # http://stackoverflow.com/questions/20205137/how-to-delete-files-in-django
-@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
+# @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def delete(request):
     if request.method != 'POST':
         raise Http404
@@ -122,7 +122,7 @@ def delete(request):
     docToDel.delete()
     return HttpResponseRedirect('/myapp/homepage/')
 
-@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
+# @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def search(request):
 
     if request.method == 'GET':
@@ -146,7 +146,7 @@ def search(request):
             )
         else: return HttpResponseRedirect('/myapp/homepage/')
 
-@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
+# @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def play(request, user_id):
     documents = Document.objects.all()
     user=request.user
@@ -168,7 +168,7 @@ def play(request, user_id):
     return render(request, 'myapp/play.html', {'video': video, 'rateddocuments':rateddocuments, 'netid':netid})
 
 
-@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
+# @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def mymovies(request):
     user=request.user
     netid=user.username
