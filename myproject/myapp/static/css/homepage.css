@@ -108,6 +108,8 @@
 
 .ratings {
 	text-align: center;
+	height: 25px;
+	overflow: hidden;
 }
 
 .movie-container {
