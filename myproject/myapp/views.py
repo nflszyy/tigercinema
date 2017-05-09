@@ -70,7 +70,6 @@ def uploadform(request):
                               choice = choiceval, docfile=url, netid = punetid)
 
             newdoc.save()
-            print (newdoc.thumbnail.name)
             # Redirect to the document list after POST
             return HttpResponseRedirect('/myapp/homepage/')
     else:
