@@ -38,6 +38,8 @@
 .ratings {
 	position: relative;
 	top: 5px;
+	height: 20px;
+	overflow: hidden;
 }
 h2 {
 	text-align: left;
