@@ -34,6 +34,7 @@ video::-webkit-media-controls-panel {
 			    <div class="video-container">
 					<video id="video" width="840" height="500" controls>
                         <source src="{{ v.docfile.url }}" type="{{ v.content_type }}" controls>
+
                         <p>Your browser does not support the video tag.</p>
                     </video>
                 </div>
@@ -66,7 +67,8 @@ video::-webkit-media-controls-panel {
                     <li>
                         <div class="movie-container">
                             <a href="../{{document.id}}">
-                            <img src="{% static 'thumbnails/'%}{{document.thumbnail}}" alt="{{document.title}}" style="width:180px; height:180px">
+                            
+                            <img src="{% static 'filmpic.jpg'%}" alt="{{document.title}}" style="width:260px; height:160px;">
                             </a>
                         </div>
                     </li>

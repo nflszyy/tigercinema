@@ -112,16 +112,13 @@ DATABASES = {
 }
 }
 
-
 S3DIRECT_DESTINATIONS = {
     # Allow anybody to upload any MIME type
     'videos': {
         'key': '/',
-        'allowed': ['video/mp4','video/quicktime']
+        'allowed': ['video/mp4', 'video/quicktime', 'video/mpeg', 'video/x-sgi-movie', 'video/x-msvideo','video/x-dv']
     },
 }
-
-
 
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
@@ -139,12 +136,11 @@ AWS_ACCESS_KEY_ID = 'AKIAJRO56I6N42GTRMFQ'
 AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'princetonuniversityfilmsharing'
 S3DIRECT_REGION = 'us-east-2'
+
     # Tell django-storages that when coming up with the URL for an item in S3 storage, keep
     # it simple - just use this domain plus the path. (If this isn't set, things get complicated).
     # This controls how the `static` template tag from `staticfiles` gets expanded, if you're using it.
     # We also use it in the next setting.
-
-  # This is used by the `static` template tag from `static`, if you're using that. Or if anything else
 
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
@@ -207,4 +203,4 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # MEDIAFILES_LOCATION = 'media'
 MEDIA_URL = "https://%s/" % (AWS_S3_CUSTOM_DOMAIN)
-DEFAULT_FILE_STORAGE = 'myproject.custom_storages.MediaStorage'
+DEFAULT_FILE_STORAGE = os.path.join(BASE_DIR, 'myproject', 'myapp', 'static')

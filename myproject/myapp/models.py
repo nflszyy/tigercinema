@@ -10,7 +10,7 @@ class Document(models.Model):
     fname = models.CharField(max_length = 100)
     lname = models.CharField(max_length = 100)
     title = models.CharField(max_length = 100)
-    thumbnail = models.CharField(max_length = 100)
+    thumbnail = models.ImageField(upload_to='thumbnails')
     netid = models.CharField(max_length = 100)
     description = models.TextField()
     GENDER_CHOICES = (
