@@ -36,8 +36,10 @@
                             <div id="description">{{form.description}}</div>
                             <div id="label"> {{ form.docfile.label_tag}}</div>
                             <div id="reminder">Please don't click the upload button before the progress bar is full</div>
-                            <div id ="thumbnail"> Please upload an image for your film: {{form.thumbnail}} </div> 
-                            <div id="docfile">Please upload your film{{form.docfile}}</div>
+                            <div id="label"> {{ form.thumbnail.label_tag}}</div>
+                            <div id ="thumbnail">{{form.thumbnail}} </div> 
+                            <div id="label"> {{ form.docfile.label_tag}}</div>
+                            <div id="docfile">{form.docfile}}</div>
                         </p>
 
                         <p><input type="submit" value="Upload"/></p>
