@@ -16,6 +16,15 @@
   top: 60px;
 }
 
+.container h2 {
+  text-align: left;
+/*  text-shadow: 3px 3px 5px grey;
+*/  font-family: 'Roboto Condensed', sans-serif;
+  margin-left: 15px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
 .fieldWrapper {
   left: 0;
   position: relative;
@@ -32,7 +41,7 @@
 	padding: 30px;
   left: 0;
   position: relative;
-  top: 30px;
+  top: 0;
   width: 100%;
   display: block;
   z-index:0;
@@ -46,8 +55,7 @@
 
 .walle img {
     position: absolute;
-    top: 0; bottom:0; left: 0; right:0;
-    margin: auto;
+    top: 130px; bottom:0; left: 430px; right:0;
     width:40%;
 }
 
