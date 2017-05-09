@@ -36,45 +36,10 @@ video::-webkit-media-controls-panel {
 					<video id="video" width="640" height="365" poster="placeholder.png" controls>
                         <source src="{{ v.docfile }}" type="{{ v.content_type }}" controls>
 
-					<video poster="{% static 'thumbnails/'%}{{document.thumbnail}}" id="video" width="840" height="500" controls>
-                        <source src="{{ v.docfile.url }}" type="{{ v.content_type }}" controls>
-
                         <p>Your browser does not support the video tag.</p>
                     </video>
                 </div>
-                <script type="text/javascript">
-                    $(document).ready(function() {
-
-
-            var time = 15;
-            var scale = 1;
-
-            var video_obj = null;
-
-            document.getElementById('video').addEventListener('loadedmetadata', function() {
-                 this.currentTime = time;
-                 video_obj = this;
-
-            }, false);
-
-            document.getElementById('video').addEventListener('loadeddata', function() {
-                 var video = document.getElementById('video');
-
-                 var canvas = document.createElement("canvas");
-                 canvas.width = video.videoWidth * scale;
-                 canvas.height = video.videoHeight * scale;
-                 canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
-
-                 var img = document.createElement("img");
-                img.src = canvas.toDataURL();
-                $('#thumbnail').append(img);
-
-                video_obj.currentTime = 0;
-
-            }, false);
-
-        });
-                </script>
+        
                 <div class="info-container">
                     <div class="document-title">
                         <h2> {{v.title}} </h2>
@@ -103,7 +68,7 @@ video::-webkit-media-controls-panel {
                     <li>
                         <div class="movie-container">
                             <a href="../{{document.id}}">
-                            <img src="{% static 'filmpic.jpg'%}" alt="{{document.title}}" style="width:260px; height:160px;">
+                            <img src= "{% static 'thumbnails/'%}{{document.thumbnail.name}}" alt="{{document.title}}" style="width:260px; height:160px;">
                             </a>
                         </div>
                     </li>
