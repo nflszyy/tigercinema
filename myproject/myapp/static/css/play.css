@@ -76,6 +76,7 @@ p {
 /*	border: 5px solid black;
 */	position: fixed;
 	top: 80px;
+	height: 90vh;
 	overflow: scroll;
 }
 .recommender p {
@@ -88,7 +89,9 @@ p {
 	border-radius: 50%;
 	border: 2px double orange;
 }
-
+.rec-padding {
+	height: 30px;	
+}
 .end-padding {
 	height: 100px;
 	width:100%;

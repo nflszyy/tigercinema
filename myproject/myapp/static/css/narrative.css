@@ -111,3 +111,19 @@
 	overflow: hidden;
 }
 
+.nothing img {
+    position: absolute;
+    top: 0; bottom:0; left: 0; right:0;
+    margin: auto;
+    width:30%;
+}
+
+
+.nothing h2 {
+	position: relative;
+	margin-top: 80px;
+	text-align: center;
+/*	text-shadow: 3px 3px 3px white;
+*/	font-family: 'Roboto Condensed', sans-serif;
+}
+
