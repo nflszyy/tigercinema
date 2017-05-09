@@ -8,6 +8,7 @@
 .narratives {
   text-align: center;
   background-color: #EFEFEE;
+  min-height: 800px;
 /*  height: 800px;
 */}
 
@@ -98,7 +99,10 @@
   box-shadow: 0px 0px 20px rgba(255,255,255,0.8);
 }
 
-.endpadding {
+.end-padding {
+	position: relative;
 	height: 100px;
+	width: 100%;
+
 }
 

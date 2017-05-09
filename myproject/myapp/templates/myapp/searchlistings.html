@@ -1,7 +1,9 @@
 {% extends "myapp/headernav.html" %}
 {% block style %}
 {%load staticfiles%}
+{% load ratings%}
     <link href="{% static 'css/documentary.css' %}" rel="stylesheet">
+}
 {% endblock %}
 
 {% block content %}
@@ -31,13 +33,11 @@
                             <div class="document-title">
                                 <p> {{document.title|stringformat:'.30s'}} </p>
                             </div>
+                            <div class="ratings">
+                                {% ratings document icon_height=15 icon_width=15%}
+                            </div>
                             
-                            <!-- delete button -->
-                            <form action="{% url 'delete' %}" method="post" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            <input type="hidden" name="docfile" value="{{ document.pk }}" />
-                            <input type="submit" value="Delete" />
-                            </form>
+                            
                         </div>
                         </li>                
                     {% endfor %}
