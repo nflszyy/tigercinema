@@ -47,7 +47,7 @@ def feedback(request):
 def welcome(request):
     return render(request, 'myapp/welcome.html')
 
-@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
+#@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def uploadform(request):
     user=request.user
     netid=user.username
