@@ -66,7 +66,7 @@ def uploadform(request):
             url = form.cleaned_data['docfile']
             punetid = user.username
             newdoc = Document(fname = firstname, lname = lastname, title = titlename, 
-                              thumbnail = reques.FILES['thumbnail'], description = descript, 
+                              thumbnail = request.FILES['thumbnail'], description = descript, 
                               choice = choiceval, docfile=url, netid = punetid)              
             newdoc.save()
             # Redirect to the document list after POST
