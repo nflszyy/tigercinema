@@ -35,7 +35,7 @@
 
 .nav-container{
 	background-color: rgba(0,0,0,0.8);
-	overflow-y: auto;
+	overflow-y: hidden;
 	position: fixed;
 	top:0;
 	left:0;
