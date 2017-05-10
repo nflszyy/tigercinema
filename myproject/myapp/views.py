@@ -48,7 +48,7 @@ def welcome(request):
     return render(request, 'myapp/welcome.html')
 
 
-@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
+#@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def uploadform(request):
     user=request.user
     netid=user.username
@@ -64,9 +64,10 @@ def uploadform(request):
             titlename = form.cleaned_data['title']
             choiceval = form.cleaned_data['choice']
             url = form.cleaned_data['docfile']
+            thumb = form.cleaned_data['thumbnail']
             punetid = user.username
             newdoc = Document(fname = firstname, lname = lastname, title = titlename, 
-                              thumbnail = request.FILES['thumbnail'], description = descript, 
+                              thumbnail = thumb, description = descript, 
                               choice = choiceval, docfile=url, netid = punetid)
 
             newdoc.save()
@@ -118,6 +119,7 @@ def delete(request):
     if request.method != 'POST':
         raise Http404
     docId = request.POST.get('docfile', None)
+    print (docId)
     docToDel = get_object_or_404(Document, pk = docId)
     #docToDel.docfile.delete()
     docToDel.delete()
