@@ -4,7 +4,14 @@
   max-width: 1200px;
   margin: 0 auto;
 }
-
+.ratings {
+	text-align: center;
+	height: 25px;
+	overflow: hidden;
+}
+.delete {
+	z-index: 100;
+}
 /* Main */
 .documentaries {
   text-align: center;
@@ -119,5 +126,6 @@
 	position: relative;
 	height: 100px;
 	width: 100%;
+	z-index: -1;
 
 }

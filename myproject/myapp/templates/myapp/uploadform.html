@@ -2,13 +2,13 @@
 {% block style %}
 {% load static from staticfiles %}
     <link href="{% static 'css/uploadform.css'%}" rel="stylesheet">
-}
 {% endblock %}
 
 {% block content %}
 {{ form.media }}
         <div class="fullpage">
             <div class="container">
+            <h2>Upload a Movie</h2>
             <div class="camera">
                 <img src="{% static 'metrage-2.png' %}" alt="walle">
             </div>

@@ -1,6 +1,6 @@
 .fullpage {
 	background-color: #EFEFEE;
-	height: 800px;
+	min-height: 800px;
 }
 
 .video-container {
@@ -38,6 +38,8 @@
 .ratings {
 	position: relative;
 	top: 5px;
+	height: 70px;
+	overflow: hidden;
 }
 h2 {
 	text-align: left;
@@ -74,6 +76,7 @@ p {
 /*	border: 5px solid black;
 */	position: fixed;
 	top: 80px;
+	height: 90vh;
 	overflow: scroll;
 }
 .recommender p {
@@ -86,7 +89,13 @@ p {
 	border-radius: 50%;
 	border: 2px double orange;
 }
-
+.rec-padding {
+	height: 30px;	
+}
+.end-padding {
+	height: 100px;
+	width:100%;
+}
 
 li {
 	display: inline-block;

@@ -32,14 +32,11 @@ video::-webkit-media-controls-panel {
         <ul class = "video-and-recommends">
         <li>
 			    <div class="video-container">
-
 					<video id="video" width="640" height="365" poster="placeholder.png" controls>
                         <source src="{{ v.docfile }}" type="{{ v.content_type }}" controls>
-
                         <p>Your browser does not support the video tag.</p>
                     </video>
                 </div>
-        
                 <div class="info-container">
                     <div class="document-title">
                         <h2> {{v.title}} </h2>
@@ -57,6 +54,7 @@ video::-webkit-media-controls-panel {
                         <img src="/static/notebook.png" alt="author" style="width: 35px; height:35px; float:left">
                         <p> About this Movie: {{v.description}} </p>
                     </div>
+
                 </div>
         </li>
         <li>
@@ -68,17 +66,19 @@ video::-webkit-media-controls-panel {
                     <li>
                         <div class="movie-container">
                             <a href="../{{document.id}}">
-                            <img src= "{% static 'thumbnails/'%}{{document.thumbnail.name}}" alt="{{document.title}}" style="width:260px; height:160px;">
+                            <img src= "{% static 'thumbnails/'%}{{document.thumbnail.name}}" alt="{{document.title}}" style="width:260px; height:160px;">                           
                             </a>
                         </div>
                     </li>
                 {% endfor %}
+                
             </ul>
+            <div class="rec-padding"></div>
         </div>
         </li>
         
         </ul>        
-
+        <div class="end-padding"></div>
 
             <div>
                 <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">

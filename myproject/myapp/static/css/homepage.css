@@ -48,8 +48,8 @@
 
 .container h2 {
 	text-align: left;
-	text-shadow: 3px 3px 5px grey;
-	font-family: 'Roboto Condensed', sans-serif;
+/*	text-shadow: 3px 3px 5px grey;
+*/	font-family: 'Roboto Condensed', sans-serif;
 	margin-left: 15px;
 	font-weight: 400;
 	text-transform: uppercase;
@@ -71,7 +71,7 @@
 }
 
 .topmovies .document-list {
-	height: 250px;
+	height: 240px;
 }
 
 /*.allmovies .document-list {

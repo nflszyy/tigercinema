@@ -19,7 +19,7 @@
     <div class="topmovies">
         <div class="bigtitle">
             <h1>TigerCinema</h1>
-            <h2>Make a film. Share with your peers.</h2>
+            <h2>Princeton student-made film sharing platform</h2>
         </div>
         <div class="container">
             <h2>Top movies</h2>
@@ -28,7 +28,6 @@
                 <ul class="document-list">
                     {% for document in rateddocuments %}
                         <li>
-
                         <div class="movie-container">
                             <a href="../play/{{document.id}}">
                                 <img src= "{% static 'thumbnails/'%}{{document.thumbnail.name}}" alt="{{document.title}}" style="width:260px; height:160px;">
@@ -87,9 +86,6 @@
                             <div class="document-title">
                                 <p> {{document.title|stringformat:'.30s'}} </p>
                             </div>
-<!--                             <div class="document-author">
-                                <p> {{document.fname}} {{document.lname}} </p>
-                            </div> -->
                             <div class="ratings">
                                 {% ratings document icon_height=15 icon_width=15%}
                             </div>
