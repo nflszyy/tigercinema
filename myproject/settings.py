@@ -118,7 +118,7 @@ S3DIRECT_DESTINATIONS = {
         'allowed': ['video/mp4', 'video/quicktime', 'video/mpeg', 'video/x-sgi-movie', 'video/x-msvideo','video/x-dv']
     },
     'thumbnails': {
-        'key': '/'.
+        'key': '/',
          'allowed': ['image/jpg', 'image/jpeg', 'image/bmp','image/vnd.dwg','image/x-dwg','image/gif','image/pjpeg','image/pict']
     }
 }
