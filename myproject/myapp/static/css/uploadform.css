@@ -62,7 +62,7 @@
 .camera img {
     position: absolute;
     margin: auto;
-    height: 120%;
+    height: 130%;
     top: 0px; bottom:0; left: 430px; right:0;
     width:21%;
 }
