@@ -30,7 +30,7 @@
                         <li>
                         <div class="movie-container">
                             <a href="../play/{{document.id}}">
-                                <img src= "document.thumbnail" alt="{{document.title}}" style="width:260px; height:160px;">
+                                <img src= "{{ document.thumbnail }}" alt="{{document.title}}" style="width:260px; height:160px;">
                                 <!-- <div class="effect">
                                     <div class="caption">
                                         <div class="blur"></div>
@@ -81,7 +81,7 @@
                         <li>
                         <div class="movie-container">
                             <a href="../play/{{document.id}}">
-                            <img src= "document.thumbnail" alt="{{document.title}}" style="width:260px; height:160px;">
+                            <img src= "{{ document.thumbnail }}" alt="{{document.title}}" style="width:260px; height:160px;">
                             </a>
                             <div class="document-title">
                                 <p> {{document.title|stringformat:'.30s'}} </p>
