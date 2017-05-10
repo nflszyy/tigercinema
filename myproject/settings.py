@@ -119,7 +119,7 @@ S3DIRECT_DESTINATIONS = {
     },
     'thumbnails': {
         'key': '/',
-         'allowed': ['image/jpg', 'image/jpeg', 'image/bmp','image/vnd.dwg','image/x-dwg','image/gif','image/pjpeg','image/pict']
+         'allowed': ['image/jpg', 'image/jpeg', 'image/bmp','image/vnd.dwg','image/x-dwg','image/gif','image/pjpeg','image/pict','image/png']
     }
 }
 
