@@ -154,7 +154,7 @@ def play(request, user_id):
     netid=user.username
     paginator = Paginator(documents, 1) # Show 1 video per page
     page = int(user_id) - documents[0].id + 1
-    rateddocuments = Document.objects.filter(ratings__isnull=False).order_by('ratings__average')[0:4]
+    rateddocuments = Document.objects.filter(ratings__isnull=False).order_by('ratings__average').reverse()[0:4]
 
     try:
         video = paginator.page(page)
