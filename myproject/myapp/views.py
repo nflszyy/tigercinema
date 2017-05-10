@@ -65,7 +65,6 @@ def uploadform(request):
             choiceval = form.cleaned_data['choice']
             url = form.cleaned_data['docfile']
             thumb = form.cleaned_data['thumbnail']
-            print (thumb)
             punetid = user.username
             newdoc = Document(fname = firstname, lname = lastname, title = titlename, 
                               thumbnail = thumb, description = descript, 
