@@ -37,12 +37,18 @@
                     </div>
                 </ul>
                 <ul class="pull-right">
-                    <!-- <li><a href={%url 'homepage'%}>All Movies</a></li> -->
-                    <li><a href={%url 'documentary'%}>Documentaries</a></li>
-                    <li><a href={%url 'narrative'%}>Narratives</a></li>
-                    <li><a href={%url 'mymovies'%}>{{netid}}</a></li>
-                    <li><a href={%url 'uploadform'%}>Upload a Movie</a></li>
+                  <li><a href={%url 'documentary'%}>Documentaries</a></li>
+                  <li><a href={%url 'narrative'%}>Narratives</a></li>
+                  <li><a href={%url 'uploadform'%}>Upload a Movie</a></li>
+                  <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">{{netid}}</a>
+                    <div class="dropdown-content">
+                      <a href={%url 'mymovies'%}>My Movies</a>
+                      <a href={%url 'cas_ng_logout'%}>Logout</a>
+                    </div>
+                  </li>
                 </ul>
+                
             </div>
         </div>
         

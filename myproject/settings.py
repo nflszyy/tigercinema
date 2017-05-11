@@ -112,14 +112,15 @@ DATABASES = {
 }
 
 S3DIRECT_DESTINATIONS = {
-    # Allow anybody to upload any MIME type
+    # Allow users to upload below video types, each video file cannot exceed a limit of 4GB
     'videos': {
         'key': '/',
-        'allowed': ['video/mp4', 'video/quicktime', 'video/mpeg', 'video/x-sgi-movie', 'video/x-msvideo','video/x-dv']
+        'allowed': ['video/mp4', 'video/quicktime', 'video/mpeg', 'video/x-sgi-movie', 'video/x-msvideo','video/x-dv'],
+        'content_length_range': (0, 5000000000)
     },
     'thumbnails': {
         'key': '/',
-         'allowed': ['image/jpg', 'image/jpeg', 'image/bmp','image/vnd.dwg','image/x-dwg','image/gif','image/pjpeg','image/pict','image/png']
+         'allowed': ['image/jpg', 'image/jpeg', 'image/bmp','image/vnd.dwg','image/x-dwg','image/gif','image/pjpeg','image/pict','image/png'],
     }
 }
 
@@ -135,10 +136,10 @@ AWS_HEADERS = {  # see http://developer.yahoo.com/performance/rules.html#expires
         'Cache-Control': 'max-age=94608000',
     }
 
-AWS_ACCESS_KEY_ID = 'AKIAJRO56I6N42GTRMFQ'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'princetonuniversityfilmsharing'
-S3DIRECT_REGION = 'us-east-2'
+AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+S3DIRECT_REGION = os.environ['S3DIRECT_REGION']
 
     # Tell django-storages that when coming up with the URL for an item in S3 storage, keep
     # it simple - just use this domain plus the path. (If this isn't set, things get complicated).

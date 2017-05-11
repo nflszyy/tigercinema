@@ -1,3 +1,4 @@
+9
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
 from django.template import RequestContext
@@ -22,7 +23,7 @@ from urllib.request import urlopen
 
 movie_count=1
 
-@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
+#@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def homepage(request):
     user=request.user
     netid=user.username
@@ -37,7 +38,7 @@ def homepage(request):
         {'documents': documents, 'rateddocuments': rateddocuments, 'netid':netid}
     )
 
-@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
+#@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def feedback(request):
     user=request.user
     netid=user.username
@@ -48,7 +49,7 @@ def welcome(request):
     return render(request, 'myapp/welcome.html')
 
 
-@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
+#@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def uploadform(request):
     user=request.user
     netid=user.username
@@ -66,9 +67,10 @@ def uploadform(request):
             url = form.cleaned_data['docfile']
             thumb = form.cleaned_data['thumbnail']
             punetid = user.username
+            pos = movie_count
             newdoc = Document(fname = firstname, lname = lastname, title = titlename, 
                               thumbnail = thumb, description = descript, 
-                              choice = choiceval, docfile=url, netid = punetid)
+                              choice = choiceval, docfile=url, netid = punetid, position = pos)
 
             newdoc.save()
             # Redirect to the document list after POST
@@ -84,7 +86,7 @@ def uploadform(request):
         { 'form':form, 'netid':netid}
         )
 
-@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
+#@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def documentary(request):
  # Load documents for the list page
     documents = Document.objects.filter(choice__exact='2')
@@ -98,7 +100,7 @@ def documentary(request):
         {'documents': documents,'netid':netid}
     )
 
-@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
+#@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def narrative(request):
  # Load documents for the list page
     documents = Document.objects.filter(choice__exact='1')
@@ -114,18 +116,24 @@ def narrative(request):
 
 
 # http://stackoverflow.com/questions/20205137/how-to-delete-files-in-django
-@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
+#@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def delete(request):
+    global movie_count
     if request.method != 'POST':
         raise Http404
     docId = request.POST.get('docfile', None)
-    print (docId)
+    documents = Document.objects.all()
     docToDel = get_object_or_404(Document, pk = docId)
     #docToDel.docfile.delete()
     docToDel.delete()
+    movie_count -= 1
+    for document in documents:
+        if (document.position > docToDel.position):
+            document.position -= 1
+            document.save()
     return HttpResponseRedirect('/myapp/homepage/')
 
-@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
+#@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def search(request):
 
     if request.method == 'GET':
@@ -149,15 +157,14 @@ def search(request):
             )
         else: return HttpResponseRedirect('/myapp/homepage/')
 
-@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
+#@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def play(request, user_id):
     documents = Document.objects.all()
     user=request.user
     netid=user.username
     paginator = Paginator(documents, 1) # Show 1 video per page
-    page = int(user_id) - documents[0].id + 1
+    page = int(user_id) - documents[0].position + 1
     rateddocuments = Document.objects.filter(ratings__isnull=False).order_by('ratings__average').reverse()[0:4]
-
     try:
         video = paginator.page(page)
     except PageNotAnInteger:
@@ -171,7 +178,7 @@ def play(request, user_id):
     return render(request, 'myapp/play.html', {'video': video, 'rateddocuments':rateddocuments, 'netid':netid})
 
 
-@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
+#@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def mymovies(request):
     user=request.user
     netid=user.username
