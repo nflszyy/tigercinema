@@ -21,6 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = '-q@x+fbn4vl-+qs!*a=+(u%j1w76z_(7re-1*b+yb&a+rj=-&+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -140,10 +141,10 @@ AWS_HEADERS = {  # see http://developer.yahoo.com/performance/rules.html#expires
 # AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
 # S3DIRECT_REGION = os.environ['S3DIRECT_REGION']
 AWS_ACCESS_KEY_ID = 'AKIAI4KVFZQI447J6HDA'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'princetonuniversityfilmsharing'
+AWS_SECRET_ACCESS_KEY = 'TYDfA9ixfD9Voc0gk4hm2VpHhHiqPBT0AYoQ9JxE'
+AWS_STORAGE_BUCKET_NAME = 'tigerfilm'
 S3DIRECT_REGION = 'us-east-2'
-SECRET_KEY = '-q@x+fbn4vl-+qs!*a=+(u%j1w76z_(7re-1*b+yb&a+rj=-&+'
+
 
     # Tell django-storages that when coming up with the URL for an item in S3 storage, keep
     # it simple - just use this domain plus the path. (If this isn't set, things get complicated).
