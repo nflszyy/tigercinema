@@ -21,7 +21,7 @@ from django.contrib.contenttypes.fields import GenericRelation
 from star_ratings.models import Rating
 from urllib.request import urlopen
 
-movie_count=1
+movie_count=0
 
 @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def homepage(request):
