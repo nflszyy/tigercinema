@@ -25,5 +25,5 @@ class Document(models.Model):
     thumbnail = S3DirectField(dest='thumbnails', blank=True)
     docfile = S3DirectField(dest='videos', blank=True)
     ratings = GenericRelation(Rating, related_query_name='documents')
-    position = models.IntegerField(default = 0)
+    position = models.IntegerField(default = 0, unique = True)
 
