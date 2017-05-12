@@ -128,7 +128,7 @@ def delete(request):
     docToDel.delete()
     movie_count -= 1
     newdoc = Document(fname = lastDocument.fname, lname = lastDocument.lname, title = lastDocument.title, 
-                              thumbnail = lastDocument.thumb, description = lastDocument.description, 
+                              thumbnail = lastDocument.thumbnail, description = lastDocument.description, 
                               choice = lastDocument.choice, docfile=lastDocument.docfile, netid = lastDocument.netid,pk = docToDel.pk)
     newdoc.save()
     lastDocument.delete()
