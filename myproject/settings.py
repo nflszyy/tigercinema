@@ -20,8 +20,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['SECRET_KEY']
-# SECRET_KEY = '-q@x+fbn4vl-+qs!*a=+(u%j1w76z_(7re-1*b+yb&a+rj=-&+'
+# SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = '-q@x+fbn4vl-+qs!*a=+(u%j1w76z_(7re-1*b+yb&a+rj=-&+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -135,15 +135,15 @@ AWS_HEADERS = {  # see http://developer.yahoo.com/performance/rules.html#expires
         'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
         'Cache-Control': 'max-age=94608000',
     }
-# AWS_ACCESS_KEY_ID = 'AKIAJRO56I6N42GTRMFQ'
-# AWS_SECRET_ACCESS_KEY = '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'
-# AWS_STORAGE_BUCKET_NAME = 'princetonuniversityfilmsharing'
-# S3DIRECT_REGION = 'us-east-2'
+AWS_ACCESS_KEY_ID = 'AKIAJRO56I6N42GTRMFQ'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'princetonuniversityfilmsharing'
+S3DIRECT_REGION = 'us-east-2'
 
-AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
-AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
-AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
-S3DIRECT_REGION = os.environ['S3DIRECT_REGION']
+# AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+# AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+# AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+# S3DIRECT_REGION = os.environ['S3DIRECT_REGION']
 
 
     # Tell django-storages that when coming up with the URL for an item in S3 storage, keep

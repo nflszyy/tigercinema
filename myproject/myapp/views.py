@@ -122,7 +122,7 @@ def delete(request):
         raise Http404
     docId = request.POST.get('docfile', None)
     documents = Document.objects.all()
-    lastDocument = documents[]
+    lastDocument = documents[len(documents)-1]
     docToDel = get_object_or_404(Document, pk = docId)
     #docToDel.docfile.delete()
     docToDel.delete()
