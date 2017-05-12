@@ -20,10 +20,8 @@ import operator
 from django.contrib.contenttypes.fields import GenericRelation
 from star_ratings.models import Rating
 from urllib.request import urlopen
-
-movie_count=1
-
-@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
+movie_count = 1
+#@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def homepage(request):
     user=request.user
     netid=user.username
@@ -38,7 +36,7 @@ def homepage(request):
         {'documents': documents, 'rateddocuments': rateddocuments, 'netid':netid}
     )
 
-@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
+#@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def feedback(request):
     user=request.user
     netid=user.username
@@ -49,7 +47,7 @@ def welcome(request):
     return render(request, 'myapp/welcome.html')
 
 
-@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
+#@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def uploadform(request):
     user=request.user
     netid=user.username
@@ -85,7 +83,7 @@ def uploadform(request):
         { 'form':form, 'netid':netid}
         )
 
-@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
+#@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def documentary(request):
  # Load documents for the list page
     documents = Document.objects.filter(choice__exact='2')
@@ -99,7 +97,7 @@ def documentary(request):
         {'documents': documents,'netid':netid}
     )
 
-@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
+#@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def narrative(request):
  # Load documents for the list page
     documents = Document.objects.filter(choice__exact='1')
@@ -115,26 +113,19 @@ def narrative(request):
 
 
 # http://stackoverflow.com/questions/20205137/how-to-delete-files-in-django
-@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
+#@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def delete(request):
     global movie_count
     if request.method != 'POST':
         raise Http404
     docId = request.POST.get('docfile', None)
-    documents = Document.objects.all()
-    lastDocument = documents[len(documents)-1]
     docToDel = get_object_or_404(Document, pk = docId)
     #docToDel.docfile.delete()
-    docToDel.delete()
     movie_count -= 1
-    newdoc = Document(fname = lastDocument.fname, lname = lastDocument.lname, title = lastDocument.title, 
-                              thumbnail = lastDocument.thumbnail, description = lastDocument.description, 
-                              choice = lastDocument.choice, docfile=lastDocument.docfile, netid = lastDocument.netid,pk = docToDel.pk)
-    newdoc.save()
-    lastDocument.delete()
+    docToDel.delete()
     return HttpResponseRedirect('/myapp/homepage/')
 
-@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
+#@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def search(request):
 
     if request.method == 'GET':
@@ -158,28 +149,16 @@ def search(request):
             )
         else: return HttpResponseRedirect('/myapp/homepage/')
 
-@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
+#@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def play(request, user_id):
-    documents = Document.objects.all()
     user=request.user
     netid=user.username
-    paginator = Paginator(documents, 1) # Show 1 video per page
-    page = int(user_id) - documents[0].pk + 1
+    video = Document.objects.get(pk=user_id)
     rateddocuments = Document.objects.filter(ratings__isnull=False).order_by('ratings__average').reverse()[0:4]
-    try:
-        video = paginator.page(page)
-    except PageNotAnInteger:
-        # If page is not an integer, deliver first page.
-        video= paginator.page(1)
-    except EmptyPage:
-        # If page is out of range (e.g. 9999), deliver last page of results.
-        video= paginator.page(paginator.num_pages)
+    return render(request, 'myapp/play.html', {'videos': video, 'rateddocuments':rateddocuments, 'netid':netid})
 
 
-    return render(request, 'myapp/play.html', {'video': video, 'rateddocuments':rateddocuments, 'netid':netid})
-
-
-@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
+#@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def mymovies(request):
     user=request.user
     netid=user.username

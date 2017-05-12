@@ -27,32 +27,31 @@ video::-webkit-media-controls-panel {
 
 {% block content %}
 <div class="fullpage">
-	{% if video %}
-		{% for v in video %}
+	{% if videos %}
         <ul class = "video-and-recommends">
         <li>
 			    <div class="video-container">
 					<video id="video" width="840" height="500" poster="placeholder.png" controls>
-                        <source src="{{ v.docfile }}" type="{{ v.content_type }}" controls>
+                        <source src="{{ videos.docfile }}" type="{{ videos.content_type }}" controls>
                         <p>Your browser does not support the video tag.</p>
                     </video>
                 </div>
                 <div class="info-container">
                     <div class="document-title">
-                        <h2> {{v.title}} </h2>
+                        <h2> {{videos.title}} </h2>
                     </div>
                     <div class="document-author">
                         <img src="/static/person.png" alt="author" style="width: 23px; height:23px; float:left">
-                        <h3> {{v.fname}} {{v.lname}}</h3>
+                        <h3> {{videos.fname}} {{videos.lname}}</h3>
                     </div>
                     <div class="ratings">
                         <img src="/static/like.png" alt="like" style="width: 26px; height:26px; float:left">
                         <p> Rate this movie here: </p>
-                        {% ratings v icon_height=20 icon_width=20 %}
+                        {% ratings videos icon_height=20 icon_width=20 %}
                     </div>
                     <div class="document-description">
                         <img src="/static/notebook.png" alt="author" style="width: 35px; height:35px; float:left">
-                        <p> About this Movie: {{v.description}} </p>
+                        <p> About this Movie: {{videos.description}} </p>
                     </div>
 
                 </div>
@@ -70,7 +69,6 @@ video::-webkit-media-controls-panel {
                             </a>
                         </div>
                     </li>
-                {% endfor %}
                 
             </ul>
             <div class="rec-padding"></div>
