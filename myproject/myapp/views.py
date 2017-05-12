@@ -21,7 +21,7 @@ from django.contrib.contenttypes.fields import GenericRelation
 from star_ratings.models import Rating
 from urllib.request import urlopen
 
-movie_count=0
+movie_count=1
 
 @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def homepage(request):
@@ -67,10 +67,9 @@ def uploadform(request):
             url = form.cleaned_data['docfile']
             thumb = form.cleaned_data['thumbnail']
             punetid = user.username
-            pos = movie_count
             newdoc = Document(fname = firstname, lname = lastname, title = titlename, 
                               thumbnail = thumb, description = descript, 
-                              choice = choiceval, docfile=url, netid = punetid, position = pos)
+                              choice = choiceval, docfile=url, netid = punetid)
 
             newdoc.save()
             # Redirect to the document list after POST
@@ -123,14 +122,16 @@ def delete(request):
         raise Http404
     docId = request.POST.get('docfile', None)
     documents = Document.objects.all()
+    lastDocument = documents[]
     docToDel = get_object_or_404(Document, pk = docId)
     #docToDel.docfile.delete()
     docToDel.delete()
     movie_count -= 1
-    for document in documents:
-        if (document.position > docToDel.position):
-            document.position -= 1
-            document.save()
+    newdoc = Document(fname = lastDocument.fname, lname = lastDocument.lname, title = lastDocument.title, 
+                              thumbnail = lastDocument.thumb, description = lastDocument.description, 
+                              choice = lastDocument.choice, docfile=lastDocument.docfile, netid = lastDocument.netid,pk = docToDel.pk)
+    newdoc.save()
+    lastDocument.delete()
     return HttpResponseRedirect('/myapp/homepage/')
 
 @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
