@@ -29,7 +29,7 @@
                     {% for document in rateddocuments %}
                         <li>
                         <div class="movie-container">
-                            <a href="../play/{{document.pk}}">
+                            <a href="../{{document.pk}}">
                                 <img src= "{{ document.thumbnail }}" alt="{{document.title}}" style="width:260px; height:160px;">
                                 <!-- <div class="effect">
                                     <div class="caption">

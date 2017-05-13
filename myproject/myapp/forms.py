@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
-
-#this is the button with which you choose file from pc
 from django import forms
 from .validators import validate_mime_type 
 
+#this is the button with which you choose file from pc
 from s3direct.widgets import S3DirectWidget
 
 class DocumentForm(forms.Form):
