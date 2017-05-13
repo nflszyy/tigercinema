@@ -17,11 +17,11 @@ class Document(models.Model):
     title = models.CharField(max_length = 100)
     netid = models.CharField(max_length = 100)
     description = models.TextField()
-    GENDER_CHOICES = (
+    GENRE_CHOICES = (
                       ('1', 'Narrative'),
                       ('2', 'Documentary'),
             )
-    choice = models.CharField(max_length = 1,choices=GENDER_CHOICES,default = '1')
+    choice = models.CharField(max_length = 1,choices=GENRE_CHOICES,default = '1')
     thumbnail = S3DirectField(dest='thumbnails', blank=True)
     docfile = S3DirectField(dest='videos', blank=True)
     ratings = GenericRelation(Rating, related_query_name='documents')

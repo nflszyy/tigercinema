@@ -20,8 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = os.environ['SECRET_KEY']
-SECRET_KEY = '-q@x+fbn4vl-+qs!*a=+(u%j1w76z_(7re-1*b+yb&a+rj=-&+'
+SECRET_KEY = os.environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -136,14 +135,10 @@ AWS_HEADERS = {  # see http://developer.yahoo.com/performance/rules.html#expires
         'Cache-Control': 'max-age=94608000',
     }
 
-# AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
-# AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
-# AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
-# S3DIRECT_REGION = os.environ['S3DIRECT_REGION']
-AWS_ACCESS_KEY_ID = 'AKIAI4KVFZQI447J6HDA'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'tigerfilm'
-S3DIRECT_REGION = 'us-east-2'
+AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+S3DIRECT_REGION = os.environ['S3DIRECT_REGION']
 
 
     # Tell django-storages that when coming up with the URL for an item in S3 storage, keep
@@ -181,20 +176,6 @@ USE_TZ = True
 
 AWS_S3_CUSTOM_DOMAIN = "s3.%s.amazonaws.comus-east-2.amazonaws.com/%s" % (S3DIRECT_REGION, AWS_STORAGE_BUCKET_NAME)
 
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-# MEDIA_URL = '/media/'
-# MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
-# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-
-# DEFAULT_FILE_STORAGE = 'myproject.s3util.MediaRootS3BotoStorage'
-# STATICFILES_STORAGE = 'myproject.s3util.StaticRootS3BotoStorage'
-
-# # Static files (CSS, JavaScript, Images)
-# # https://docs.djangoproject.com/en/1.8/howto/static-files/
-# # STATIC_URL = '/static/'
-
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-# MEDIA_URL = '/media/'
 
 # # Static files (CSS, JavaScript, Images)
 # # https://docs.djangoproject.com/en/1.8/howto/static-files/
