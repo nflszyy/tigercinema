@@ -1,26 +1,25 @@
 {% extends "myapp/headernav.html" %}
 {% block style %}
+<!-- Load django-star-ratings, load static files -->
 {% load ratings %}
-{%load staticfiles%}
-    <link href="{% static 'css/homepage.css'%}" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
-    <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
+{% load staticfiles %}
+
+<!-- Custon CSS -->
+<link href="{% static 'css/homepage.css'%}" rel="stylesheet">
+
+<!-- CSS and Javascript for star ratings -->
+<link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+<script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
 {% endblock %}
-                   <script type="text/javascript">
-                        document.getElementById('video').addEventListener('loadedmetadata', function() {
-                                this.currentTime = 5;
-                                }, false);
-                   </script>
+
 {% block content %}
-<!--         <div class="header-image">
-        <img src='../static/navbar.png'>
-        </div> -->
-        <!-- List of uploaded documents -->
+    <!--Top movies -->
     <div class="topmovies">
         <div class="bigtitle">
             <h1>TigerCinema</h1>
             <h2>Princeton student-made film sharing platform</h2>
         </div>
+        <!-- Top movies container -->
         <div class="container">
             <h2>Top movies</h2>
             {%load staticfiles%}
@@ -31,28 +30,15 @@
                         <div class="movie-container">
                             <a href="../play/{{document.pk}}">
                                 <img src= "{{ document.thumbnail }}" alt="{{document.title}}" style="width:260px; height:160px;">
-                                <!-- <div class="effect">
-                                    <div class="caption">
-                                        <div class="blur"></div>
-                                        <div class="caption-text">
-                                            <h1>Amazing Caption</h1>
-                                            <p>Whatever It Is - Always Awesome</p>
-                                        </div>
-                                    </div>
-                                </div> -->
                             </a>
                             
                             <div class="document-title">
                                 <p> {{document.title|stringformat:'.30s'}} </p>
                             </div>
-<!--                             <div class="document-author">
-                                <p> {{document.fname}} {{document.lname}} </p>
-                            </div> -->
+                            <!-- Star rating icon -->
                             <div class="ratings">
                                 {% ratings document icon_height=15 icon_width=15%}
-                            </div>
-                            
-                            
+                            </div>                            
                         </div>
                         </li>               
                     {% endfor %}
@@ -63,6 +49,7 @@
         </div>
     </div>
 
+    <!-- All movies -->
     <div class="allmovies">
         <!-- Search button -->
         <div id="wrap">
@@ -70,6 +57,8 @@
           <input id="search" name="search" type="text" placeholder="Search..."><input id="search_submit" value="Rechercher" type="submit">
           </form>
         </div>
+
+        <!-- All movies listing -->
         <div class="container">
             <h2>All movies</h2>
             {%load staticfiles%}

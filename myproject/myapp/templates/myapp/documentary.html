@@ -1,11 +1,17 @@
 {% extends "myapp/headernav.html" %}
 {% block style %}
+<!-- Load django-star-ratings, load static files -->
 {% load ratings %}
-{%load staticfiles%}
-    <link href="{% static 'css/documentary.css' %}" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
-    <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
+{% load staticfiles %}
+
+<!-- Custon CSS -->
+<link href="{% static 'css/documentary.css'%}" rel="stylesheet">
+
+<!-- CSS and Javascript for star ratings -->
+<link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+<script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
 {% endblock %}
+
 
 {% block content %}
     <!-- Search button -->
@@ -14,10 +20,7 @@
           <input id="search" name="search" type="text" placeholder="Search..."><input id="search_submit" value="Search" type="submit">
           </form>
         </div>
-<!--         <div class="header-image">
-        <img src='../static/navbar.png'>
-        </div> -->
-        <!-- List of uploaded documents -->
+        <!-- All documentaries -->
         <div class="documentaries">
         <div class="container">
             <h2>Documentaries</h2>
@@ -34,10 +37,6 @@
                             <div class="document-title">
                                 <p> {{document.title|stringformat:'.30s'}} </p>
                             </div>
-                            <!-- <div class="ratings">
-                                {% ratings document icon_height=15 icon_width=15%}
-                            </div> -->
-                            
                         </div>
                         </li>                
                     {% endfor %}
@@ -45,8 +44,8 @@
             {% else %}
                 <p>No documents.</p>
             {% endif %}
-            </div>
-            <div class="end-padding">
+            E<!-- nd of page padding -->
+            </div><div class="end-padding">
             </div>
         </div>
 

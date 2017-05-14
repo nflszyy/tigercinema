@@ -1,8 +1,10 @@
 {% extends "myapp/headernav.html" %}
 {% block style %}
-{% load ratings%}
-{%load staticfiles%}
-    <link href="{% static 'css/documentary.css' %}" rel="stylesheet">
+<!-- Load django-star-ratings, load static files -->
+{% load ratings %}
+{% load staticfiles %}
+<!-- Custon CSS -->
+<link href="{% static 'css/documentary.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
@@ -12,14 +14,10 @@
           <input id="search" name="search" type="text" placeholder="Search..."><input id="search_submit" value="Search" type="submit">
           </form>
         </div>
-<!--         <div class="header-image">
-        <img src='../static/navbar.png'>
-        </div> -->
-        <!-- List of uploaded documents -->
- 
-            {%load staticfiles%}
-            {% if documents %}
-            <div class="documentaries">
+        {%load staticfiles%}
+        <!-- List all uploaded movie by this user -->
+        {% if documents %}
+        <div class="documentaries">
             <div class="container">
                 <ul class="document-list">
                 <h2>My movies</h2>
@@ -32,34 +30,30 @@
                             <div class="document-title">
                                 <p> {{document.title|stringformat:'.30s'}} </p>
                             </div>
-                            <!-- <div class="ratings">
-                                {% ratings document icon_height=15 icon_width=15%}
-                            </div> -->
                             <!-- delete button -->
                             <div class="delete">
-                            <form action="{% url 'delete' %}" method="post" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            <input type="hidden" name="docfile" value="{{ document.pk }}" />
-                            <input type="submit" value="Delete" />
-                            </form>
+                                <form action="{% url 'delete' %}" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <input type="hidden" name="docfile" value="{{ document.pk }}" />
+                                <input type="submit" value="Delete" />
+                                </form>
                             </div>
                         </div>
                         </li>                
                     {% endfor %}
                 </ul>
                 </div>
-                <div class="end-padding">
+                <div class="end-padding"></div>
+        </div>
+        {% else %}
+        <!-- Display image if no movies uploaded -->
+        <div class="container">
+            <div class="nothing">
+            <h2>You have uploaded 0 movies</h2>
+            <img src="{% static 'walle.png'%}" alt="walle">  
             </div>
-                </div>
-            {% else %}
-            <div class="container">
-                <div class="nothing">
-                <h2>You have uploaded 0 movies</h2>
-                <img src="{% static 'walle.png'%}" alt="walle">
-                    
-                </div>
-            </div>
-            {% endif %}
+        </div>
+        {% endif %}
 
 
     </body>

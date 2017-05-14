@@ -9,8 +9,6 @@
 	position: relative;
 	margin: 0 20px;
 	top: 80px;
-/*	border: 5px double grey;
-*/
 }
 .info-container {
 	width: 680px;
@@ -71,8 +69,7 @@ p {
 }
 
 .recommender {
-/*	border: 5px solid black;
-*/	position: fixed;
+	position: fixed;
 	top: 80px;
 	height: 90vh;
 	overflow: scroll;
@@ -87,14 +84,13 @@ p {
 	border-radius: 50%;
 	border: 2px double orange;
 }
+li {
+	display: inline-block;
+}
 .rec-padding {
 	height: 30px;	
 }
 .end-padding {
 	height: 100px;
 	width:100%;
-}
-
-li {
-	display: inline-block;
 }

@@ -1,10 +1,15 @@
 {% extends "myapp/headernav.html" %}
 {% block style %}
+<!-- Load django-star-ratings, load static files -->
 {% load ratings %}
-{%load staticfiles%}
-    <link href="{% static 'css/narrative.css' %}" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
-    <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
+{% load staticfiles %}
+
+<!-- Custon CSS -->
+<link href="{% static 'css/narrative.css'%}" rel="stylesheet">
+
+<!-- CSS and Javascript for star ratings -->
+<link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+<script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -14,39 +19,33 @@
           <input id="search" name="search" type="text" placeholder="Search..."><input id="search_submit" value="Search" type="submit">
           </form>
         </div>
-<!--         <div class="header-image">
-        <img src='../static/navbar.png'>
-        </div> -->
-        <!-- List of uploaded documents -->
+
+        <!-- All narratives -->
         <div class="narratives">
-        <div class="container">
-            <h2>Narratives</h2>
-            {% if documents %}
-                <ul class="document-list">
-                    {% for document in documents %}
-                        <li>
-                        <div class="movie-container">
-                            <a href="../play/{{document.pk}}">
-                            <img src= "{{ document.thumbnail }}" alt="{{document.title}}" style="width:260px; height:160px;">
-                            </a>
-                            <div class="document-title">
-                                <p> {{document.title|stringformat:'.30s'}} </p>
+            <div class="container">
+                <h2>Narratives</h2>
+                {% if documents %}
+                    <ul class="document-list">
+                        {% for document in documents %}
+                            <li>
+                            <div class="movie-container">
+                                <a href="../play/{{document.pk}}">
+                                <img src= "{{ document.thumbnail }}" alt="{{document.title}}" style="width:260px; height:160px;">
+                                </a>
+                                <div class="document-title">
+                                    <p> {{document.title|stringformat:'.30s'}} </p>
+                                </div>
+
                             </div>
-                            <!-- <div class="ratings">
-                                {% ratings document icon_height=15 icon_width=15%}
-                            </div> -->
-                            
-                            
-                        </div>
-                        </li>                
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <p>No documents.</p>
-            {% endif %}
-        </div>
-            <div class="end-padding">
+                            </li>                
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No documents.</p>
+                {% endif %}
             </div>
+            2<!-- End of page padding -->
+            <div class="end-padding"></div>
         </div>
 
     </body>

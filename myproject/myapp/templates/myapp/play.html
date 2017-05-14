@@ -1,16 +1,20 @@
-
 {% extends "myapp/headernav.html" %}
 {% block style %}
+<!-- Load django-star-ratings, load static files -->
 {% load ratings %}
-{%load staticfiles%}
-<!--   <link href="{% static 'css/play.css' %}" rel="stylesheet">
- -->  
-    <link href="{% static 'css/play.css'%}" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
-    <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
-    <style type = "text/css">
+{% load staticfiles %}
 
-    video::-internal-media-controls-download-button {
+<!-- Custon CSS -->
+<link href="{% static 'css/play.css'%}" rel="stylesheet">
+
+<!-- CSS and Javascript for star ratings -->
+<link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+<script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
+
+<!-- Script for video playing-->
+<style type = "text/css">
+
+video::-internal-media-controls-download-button {
     display:none;
 }
 
@@ -19,16 +23,16 @@ video::-webkit-media-controls-enclosure {
 }
 
 video::-webkit-media-controls-panel {
-    width: calc(100% + 30px); /* Adjust as needed */
+    width: calc(100% + 30px);
 }
 </style>
-
 {% endblock %}
 
 {% block content %}
 <div class="fullpage">
 	{% if videos %}
         <ul class = "video-and-recommends">
+        <!-- Video and info -->
         <li>
 			    <div class="video-container">
 					<video id="video" width="840" height="500" poster="placeholder.png" controls>
@@ -56,6 +60,7 @@ video::-webkit-media-controls-panel {
 
                 </div>
         </li>
+       <!--  Recommendation on the right -->
         <li>
         <div class="recommender">
             <p>Recommended</p>
@@ -76,12 +81,8 @@ video::-webkit-media-controls-panel {
         </li>
         
         </ul>        
+        <!-- End of page padding -->
         <div class="end-padding"></div>
-
-            <div>
-                <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
-                <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
-            </div>
 
 	{% else %}
       <p>No videos.</p>

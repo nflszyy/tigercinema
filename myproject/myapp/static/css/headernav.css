@@ -1,4 +1,4 @@
-
+/*Navigation Bar*/
 .nav a{
 	color: #FFF;
 	font-size: 20px;
@@ -9,13 +9,13 @@
   letter-spacing: 1px;
 
 }
+.nav a:hover{
+  color: #DCDCDC;
+  text-decoration: none;
+}
 #left-bar a{
   font-size: 22px;
   text-shadow: 2px 2px 5px #aaa;
-}
-.nav a:hover{
-	color: #DCDCDC;
-	text-decoration: none;
 }
 
 #left-bar a:hover{
@@ -50,17 +50,13 @@
 }
 
 
-
+/*Dropdown menu */
 .nav li a, .dropbtn {
     display: inline-block;
     color: white;
     text-align: center;
     text-decoration: none;
 }
-
-/*.nav li a:hover, .dropdown:hover .dropbtn {
-    background-color: red;
-}*/
 
 .nav li.dropdown {
     display: inline-block;
@@ -69,8 +65,7 @@
 .dropdown-content {
     display: none;
     position: absolute;
-/*    top: 30px;
-*/    background-color: rgba(0,0,0,0.8);
+    background-color: rgba(0,0,0,0.8);
     min-width: 150px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
     z-index: 1;
@@ -96,13 +91,9 @@
     display: block;
 }
 
-/*.input[type=text] {
-    width: 130px;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
-}*/
 
 
+/*Search button*/
 #wrap {
   margin: 80px 100px;
   display: inline-block;
@@ -167,51 +158,3 @@
 #wrap input[type="submit"]:hover {
   opacity: 1.2;
 }
-
-
-/*
-.svg-wrapper {
-  height: 60px;
-	margin: 0 auto;
-  position: relative;
- top: 50%;
-  transform: translateY(-50%);
-  width: 190px;
-}
-
-.shape {
-  fill: transparent;
-  stroke-dasharray: 140 540;
-  stroke-dashoffset: -474;
-  stroke-width: 8px;
-  stroke: rgb(236,219,199);
-}
-
-.text {
-  color: #fff;
-  font-family: 'Roboto', sans-serif;
-  font-size: 22px;
-  letter-spacing: 4px;
-  line-height: 30px;
-  position: relative;
-  top: -45px;
-}
-
-@keyframes draw {
-  0% {
-    stroke-dasharray: 140 540;
-    stroke-dashoffset: -474;
-    stroke-width: 8px;
-  }
-  100% {
-    stroke-dasharray: 760;
-    stroke-dashoffset: 0;
-    stroke-width: 4px;
-  }
-}
-
-.svg-wrapper:hover .shape {
-  -webkit-animation: 0.5s draw linear forwards;
-  animation: 0.5s draw linear forwards;
-}
-*/
