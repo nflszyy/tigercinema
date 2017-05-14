@@ -45,11 +45,11 @@ def feedback(request):
     netid=user.username
     return render(request,'myapp/feedback.html',{'netid':netid})
 
-
+# View function for welcome page
 def welcome(request):
     return render(request, 'myapp/welcome.html')
 
-
+# View Function for uploadform
 @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def uploadform(request):
     user=request.user
@@ -85,10 +85,11 @@ def uploadform(request):
         request, 'myapp/uploadform.html',
         { 'form':form, 'netid':netid}
         )
-
+# View Function for Documentaries
 @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def documentary(request):
  # Load documents for the list page
+    # Get all the films in the documentary category
     documents = Document.objects.filter(choice__exact='2')
     user=request.user
     netid=user.username
@@ -100,9 +101,11 @@ def documentary(request):
         {'documents': documents,'netid':netid}
     )
 
+# View Function for Narratives
 @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def narrative(request):
  # Load documents for the list page
+    # Get all the films in the narrative category
     documents = Document.objects.filter(choice__exact='1')
     user=request.user
     netid=user.username
@@ -114,7 +117,7 @@ def narrative(request):
         {'documents': documents,'netid':netid}
     )
 
-
+# Function to delete things
 # http://stackoverflow.com/questions/20205137/how-to-delete-files-in-django
 @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def delete(request):
@@ -128,6 +131,7 @@ def delete(request):
     docToDel.delete()
     return HttpResponseRedirect('/myapp/homepage/')
 
+# Function to Search for films by title or by filmmaker
 @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def search(request):
 
@@ -152,6 +156,7 @@ def search(request):
             )
         else: return HttpResponseRedirect('/myapp/homepage/')
 
+# Play the film clicked by the user, the film is identified by the primary key in the database
 @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def play(request, user_id):
     user=request.user
@@ -160,7 +165,7 @@ def play(request, user_id):
     rateddocuments = Document.objects.filter(ratings__isnull=False).order_by('ratings__average').reverse()[0:4]
     return render(request, 'myapp/play.html', {'videos': video, 'rateddocuments':rateddocuments, 'netid':netid})
 
-
+# Display all films uploaded by a particular filmmaker
 @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def mymovies(request):
     user=request.user

@@ -8,7 +8,7 @@ from django.core.files.storage import FileSystemStorage
 from django.conf import settings
 import os
 
-
+# Thumbnail Storage
 fs = FileSystemStorage(location = os.path.join(settings.BASE_DIR, 'myproject', 'myapp', 'static', 'thumbnails'))
 
 class Document(models.Model):
