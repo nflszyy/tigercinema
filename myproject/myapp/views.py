@@ -20,7 +20,6 @@ import operator
 from django.contrib.contenttypes.fields import GenericRelation
 from star_ratings.models import Rating
 from urllib.request import urlopen
-movie_count = 1
 
 # View function for homepage
 @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
@@ -38,13 +37,6 @@ def homepage(request):
         {'documents': documents, 'rateddocuments': rateddocuments, 'netid':netid}
     )
 
-# View function for feedback
-@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
-def feedback(request):
-    user=request.user
-    netid=user.username
-    return render(request,'myapp/feedback.html',{'netid':netid})
-
 # View function for welcome page
 def welcome(request):
     return render(request, 'myapp/welcome.html')
@@ -54,12 +46,10 @@ def welcome(request):
 def uploadform(request):
     user=request.user
     netid=user.username
-    global movie_count
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():
             user=request.user
-            movie_count+=1
             firstname = form.cleaned_data['fname']
             lastname = form.cleaned_data['lname']
             descript = form.cleaned_data['description']
@@ -118,16 +108,13 @@ def narrative(request):
     )
 
 # Function to delete things
-# http://stackoverflow.com/questions/20205137/how-to-delete-files-in-django
+# Inspired by code on http://stackoverflow.com/questions/20205137/how-to-delete-files-in-django
 @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def delete(request):
-    global movie_count
     if request.method != 'POST':
         raise Http404
     docId = request.POST.get('docfile', None)
     docToDel = get_object_or_404(Document, pk = docId)
-    #docToDel.docfile.delete()
-    movie_count -= 1
     docToDel.delete()
     return HttpResponseRedirect('/myapp/homepage/')
 
