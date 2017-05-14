@@ -103,7 +103,7 @@ DATABASES = {
 }
 
 S3DIRECT_DESTINATIONS = {
-    # Allow users to upload below video types, each video file cannot exceed a limit of 4GB
+    # Allow users to upload below video types, each video file cannot exceed a limit of 5GB
     'videos': {
         'key': '/',
         'allowed': ['video/mp4', 'video/quicktime', 'video/mpeg', 'video/x-sgi-movie', 'video/x-msvideo','video/x-dv'],
