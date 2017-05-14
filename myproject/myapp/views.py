@@ -1,4 +1,4 @@
-9
+
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
 from django.template import RequestContext
@@ -22,6 +22,7 @@ from star_ratings.models import Rating
 from urllib.request import urlopen
 movie_count = 1
 
+# View function for homepage
 @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def homepage(request):
     user=request.user
@@ -37,6 +38,7 @@ def homepage(request):
         {'documents': documents, 'rateddocuments': rateddocuments, 'netid':netid}
     )
 
+# View function for feedback
 @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def feedback(request):
     user=request.user
