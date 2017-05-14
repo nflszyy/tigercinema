@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from django.db import models
-from .validators import validate_mime_type
 from django.contrib.contenttypes.fields import GenericRelation
 from star_ratings.models import Rating
 from s3direct.fields import S3DirectField
