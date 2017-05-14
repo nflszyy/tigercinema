@@ -20,7 +20,6 @@ import operator
 from django.contrib.contenttypes.fields import GenericRelation
 from star_ratings.models import Rating
 from urllib.request import urlopen
-movie_count = 1
 
 # View function for homepage
 @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
@@ -38,28 +37,19 @@ def homepage(request):
         {'documents': documents, 'rateddocuments': rateddocuments, 'netid':netid}
     )
 
-# View function for feedback
-@login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
-def feedback(request):
-    user=request.user
-    netid=user.username
-    return render(request,'myapp/feedback.html',{'netid':netid})
-
-
+# View function for welcome page
 def welcome(request):
     return render(request, 'myapp/welcome.html')
 
-
+# View Function for uploadform
 @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def uploadform(request):
     user=request.user
     netid=user.username
-    global movie_count
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():
             user=request.user
-            movie_count+=1
             firstname = form.cleaned_data['fname']
             lastname = form.cleaned_data['lname']
             descript = form.cleaned_data['description']
@@ -85,10 +75,11 @@ def uploadform(request):
         request, 'myapp/uploadform.html',
         { 'form':form, 'netid':netid}
         )
-
+# View Function for Documentaries
 @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def documentary(request):
  # Load documents for the list page
+    # Get all the films in the documentary category
     documents = Document.objects.filter(choice__exact='2')
     user=request.user
     netid=user.username
@@ -100,9 +91,11 @@ def documentary(request):
         {'documents': documents,'netid':netid}
     )
 
+# View Function for Narratives
 @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def narrative(request):
  # Load documents for the list page
+    # Get all the films in the narrative category
     documents = Document.objects.filter(choice__exact='1')
     user=request.user
     netid=user.username
@@ -114,20 +107,18 @@ def narrative(request):
         {'documents': documents,'netid':netid}
     )
 
-
-# http://stackoverflow.com/questions/20205137/how-to-delete-files-in-django
+# Function to delete things
+# Inspired by code on http://stackoverflow.com/questions/20205137/how-to-delete-files-in-django
 @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def delete(request):
-    global movie_count
     if request.method != 'POST':
         raise Http404
     docId = request.POST.get('docfile', None)
     docToDel = get_object_or_404(Document, pk = docId)
-    #docToDel.docfile.delete()
-    movie_count -= 1
     docToDel.delete()
     return HttpResponseRedirect('/myapp/homepage/')
 
+# Function to Search for films by title or by filmmaker
 @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def search(request):
 
@@ -152,6 +143,7 @@ def search(request):
             )
         else: return HttpResponseRedirect('/myapp/homepage/')
 
+# Play the film clicked by the user, the film is identified by the primary key in the database
 @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def play(request, user_id):
     user=request.user
@@ -160,7 +152,7 @@ def play(request, user_id):
     rateddocuments = Document.objects.filter(ratings__isnull=False).order_by('ratings__average').reverse()[0:4]
     return render(request, 'myapp/play.html', {'videos': video, 'rateddocuments':rateddocuments, 'netid':netid})
 
-
+# Display all films uploaded by a particular filmmaker
 @login_required(login_url='/accounts/login/',redirect_field_name='/myapp/homepage/')
 def mymovies(request):
     user=request.user

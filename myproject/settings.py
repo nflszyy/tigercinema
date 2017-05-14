@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -99,19 +99,11 @@ DATABASES = {
          'PASSWORD': 'md5b616d86bca63a780a9f5561c0a40ca10',
          'HOST': 'localhost',
          'PORT': '5432',
-
-        # Yuyan's settings
-        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        # 'NAME': 'postgres',
-        # 'USER': 'postgres',
-        # 'PASSWORD': 'password',
-        # 'HOST': 'localhost',
-        # 'PORT': '5432',
 }
 }
 
 S3DIRECT_DESTINATIONS = {
-    # Allow users to upload below video types, each video file cannot exceed a limit of 4GB
+    # Allow users to upload below video types, each video file cannot exceed a limit of 5GB
     'videos': {
         'key': '/',
         'allowed': ['video/mp4', 'video/quicktime', 'video/mpeg', 'video/x-sgi-movie', 'video/x-msvideo','video/x-dv'],
